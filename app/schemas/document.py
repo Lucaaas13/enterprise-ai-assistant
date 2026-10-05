@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class DocumentCreate(BaseModel):
@@ -10,3 +10,5 @@ class DocumentResponse(BaseModel):
     id: int
     title: str
     content: str
+
+    model_config = ConfigDict(from_attributes=True)

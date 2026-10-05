@@ -1,17 +1,56 @@
+import os
+
 import pytest
+from dotenv import load_dotenv
 from fastapi.testclient import TestClient
+from sqlalchemy import create_engine, text
+from sqlalchemy.orm import sessionmaker
 
+from app.database.database import Base, get_db
 from app.main import app
-from app.services import document_service
+from app.models.document import Document
 
+
+load_dotenv()
+
+TEST_DATABASE_URL = os.getenv("TEST_DATABASE_URL")
+
+if not TEST_DATABASE_URL:
+    raise RuntimeError("TEST_DATABASE_URL is not defined")
+
+
+test_engine = create_engine(TEST_DATABASE_URL)
+
+TestingSessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=test_engine,
+)
+
+
+Base.metadata.create_all(bind=test_engine)
+
+
+def override_get_db():
+    db = TestingSessionLocal()
+
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+app.dependency_overrides[get_db] = override_get_db
 
 client = TestClient(app)
 
 
 @pytest.fixture(autouse=True)
-def reset_documents():
-    document_service.documents.clear()
-    document_service.next_id = 1
+def reset_database():
+    with test_engine.begin() as connection:
+        connection.execute(
+            text("TRUNCATE TABLE documents RESTART IDENTITY CASCADE")
+        )
 
 
 def test_health_check():

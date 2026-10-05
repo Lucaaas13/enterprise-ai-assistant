@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 
 from app.api.documents import router as documents_router
+from app.database.database import Base, engine
+from app.models.document import Document
+
+
+Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(
