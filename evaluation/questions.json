@@ -1,0 +1,52 @@
+[
+  {
+    "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+    "should_answer": true,
+    "expected_terms": ["postgresql", "pgvector"]
+  },
+  {
+    "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+    "should_answer": true,
+    "expected_terms": ["fastapi"]
+  },
+  {
+    "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+    "should_answer": true,
+    "expected_terms": ["ollama"]
+  },
+  {
+    "question": "Quel outil est utilisé pour générer les embeddings ?",
+    "should_answer": true,
+    "expected_terms": ["sentence transformers"]
+  },
+  {
+    "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+    "should_answer": true,
+    "expected_terms": ["docker"]
+  },
+  {
+    "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+    "should_answer": true,
+    "expected_terms": ["commence avec le minimum"]
+  },
+  {
+    "question": "Quel est l'objectif de la phase RAG ?",
+    "should_answer": true,
+    "expected_terms": ["llm", "chunks"]
+  },
+  {
+    "question": "Quel est le salaire prévu pour l'ingénieur responsable du projet ?",
+    "should_answer": false,
+    "expected_terms": []
+  },
+  {
+    "question": "Quel est le nom du directeur général de l'entreprise ?",
+    "should_answer": false,
+    "expected_terms": []
+  },
+  {
+    "question": "Quelle voiture doit acheter le développeur du projet ?",
+    "should_answer": false,
+    "expected_terms": []
+  }
+]
