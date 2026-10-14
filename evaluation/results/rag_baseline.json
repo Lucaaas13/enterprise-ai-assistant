@@ -1,0 +1,1229 @@
+{
+  "name": "rag_baseline",
+  "created_at": "2026-10-12T13:25:34.058661",
+  "configuration": {
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "embedding_dimension": 384,
+    "chunk_size_tokens": 100,
+    "chunk_overlap_tokens": 20,
+    "retrieval": "hybrid_rrf",
+    "candidate_k": 10,
+    "top_k": 5,
+    "reranker": null,
+    "llm": "qwen2.5:3b",
+    "llm_runtime": "ollama"
+  },
+  "dataset": {
+    "total_questions": 30,
+    "answerable_questions": 25,
+    "unanswerable_questions": 5
+  },
+  "metrics": {
+    "accuracy": 0.6333333333333333,
+    "answerable_accuracy": 0.56,
+    "abstention_accuracy": 1.0,
+    "hallucinations": 0,
+    "average_latency_seconds": 14.64447314333423
+  },
+  "results": [
+    {
+      "id": 1,
+      "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+      "should_answer": true,
+      "reference_answer": "PostgreSQL avec l'extension pgvector.",
+      "expected_terms": [
+        "postgresql",
+        "vector"
+      ],
+      "expected_pages": [
+        6,
+        7,
+        14
+      ],
+      "answer": "La base de données vectorielle utilisée est PostgreSQL [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 90,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.030679156908665108
+        },
+        {
+          "chunk_id": 89,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.02964426877470356
+        },
+        {
+          "chunk_id": 32,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 35,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 7,
+          "score": 0.016129032258064516
+        },
+        {
+          "chunk_id": 23,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 5,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 4.134138199995505,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 2,
+      "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+      "should_answer": true,
+      "reference_answer": "FastAPI.",
+      "expected_terms": [
+        "fastapi"
+      ],
+      "expected_pages": [
+        4
+      ],
+      "answer": "FastAPI [Source 1]",
+      "sources": [
+        {
+          "chunk_id": 17,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 4,
+          "score": 0.03278688524590164
+        },
+        {
+          "chunk_id": 4,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.03225806451612903
+        },
+        {
+          "chunk_id": 14,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 4,
+          "score": 0.031009615384615385
+        },
+        {
+          "chunk_id": 3,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.015873015873015872
+        },
+        {
+          "chunk_id": 56,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 13.341817999986233,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 3,
+      "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+      "should_answer": true,
+      "reference_answer": "Ollama.",
+      "expected_terms": [
+        "ollama"
+      ],
+      "expected_pages": [
+        7
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 14.256839000008767,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 4,
+      "question": "Quel outil est utilisé pour générer les embeddings ?",
+      "should_answer": true,
+      "reference_answer": "Sentence Transformers avec Hugging Face.",
+      "expected_terms": [
+        "sentence-transformers"
+      ],
+      "expected_pages": [
+        6
+      ],
+      "answer": "Installer sentence-transformers. [Source 1]",
+      "sources": [
+        {
+          "chunk_id": 29,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": 37,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 7,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 30,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.016129032258064516
+        },
+        {
+          "chunk_id": 49,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.015873015873015872
+        },
+        {
+          "chunk_id": 8,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 2,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 12.483990700013237,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 5,
+      "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+      "should_answer": true,
+      "reference_answer": "Docker.",
+      "expected_terms": [
+        "docker"
+      ],
+      "expected_pages": [
+        8,
+        9
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 13.571462399995653,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 6,
+      "question": "Quel est l'objectif de la phase RAG ?",
+      "should_answer": true,
+      "reference_answer": "Faire générer une réponse par un LLM uniquement à partir des chunks retrouvés.",
+      "expected_terms": [
+        "llm",
+        "chunks"
+      ],
+      "expected_pages": [
+        7
+      ],
+      "answer": "Faire générer une réponse par un LLM uniquement à partir des chunks retrouvés. [Source 1]",
+      "sources": [
+        {
+          "chunk_id": 36,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 7,
+          "score": 0.03278688524590164
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.031746031746031744
+        },
+        {
+          "chunk_id": 97,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 15,
+          "score": 0.0315136476426799
+        },
+        {
+          "chunk_id": 82,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 13,
+          "score": 0.031054405392392875
+        },
+        {
+          "chunk_id": 7,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 2,
+          "score": 0.015625
+        }
+      ],
+      "latency_seconds": 15.989528200007044,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 7,
+      "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+      "should_answer": true,
+      "reference_answer": "Commencer avec le minimum et ne pas encore ajouter LangGraph ou Azure.",
+      "expected_terms": [
+        "minimum",
+        "langgraph",
+        "azure"
+      ],
+      "expected_pages": [
+        4
+      ],
+      "answer": "Il faut commencer avec le minimum et ne pas encore ajouter LangChain, LangGraph, MLflow ou Azure. Commence avec le minimum. [Source 3]",
+      "sources": [
+        {
+          "chunk_id": 64,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.03225806451612903
+        },
+        {
+          "chunk_id": 68,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 11,
+          "score": 0.031544957774465976
+        },
+        {
+          "chunk_id": 17,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 4,
+          "score": 0.030886196246139225
+        },
+        {
+          "chunk_id": 86,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 13,
+          "score": 0.030798389007344232
+        },
+        {
+          "chunk_id": 4,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.030798389007344232
+        }
+      ],
+      "latency_seconds": 15.599389799986966,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 8,
+      "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+      "should_answer": true,
+      "reference_answer": "GET /health.",
+      "expected_terms": [
+        "health"
+      ],
+      "expected_pages": [
+        4
+      ],
+      "answer": "GET /health retourne 200. [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 19,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 4,
+          "score": 0.030776515151515152
+        },
+        {
+          "chunk_id": 91,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.030776515151515152
+        },
+        {
+          "chunk_id": 75,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 12,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 7,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 2,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 94,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 14.209150899987435,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 9,
+      "question": "Quel endpoint permet d'ajouter un document ?",
+      "should_answer": true,
+      "reference_answer": "POST /documents.",
+      "expected_terms": [
+        "documents"
+      ],
+      "expected_pages": [
+        4
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 13.845050499978242,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 10,
+      "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+      "should_answer": true,
+      "reference_answer": "TXT, Markdown puis PDF texte natif.",
+      "expected_terms": [
+        "txt",
+        "markdown",
+        "pdf"
+      ],
+      "expected_pages": [
+        5
+      ],
+      "answer": "Les formats de documents à être pris en charge sont TXT et Markdown [Source 4].",
+      "sources": [
+        {
+          "chunk_id": 24,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 5,
+          "score": 0.030621785881252923
+        },
+        {
+          "chunk_id": 97,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 15,
+          "score": 0.029910714285714284
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.029437229437229435
+        },
+        {
+          "chunk_id": 25,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 5,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 81,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 13,
+          "score": 0.01639344262295082
+        }
+      ],
+      "latency_seconds": 15.459834300010698,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 11,
+      "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+      "should_answer": true,
+      "reference_answer": "Parce que la taille des chunks affecte la qualité du retrieval.",
+      "expected_terms": [
+        "chunks",
+        "retrieval"
+      ],
+      "expected_pages": [
+        5,
+        6
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 14.581007700006012,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 12,
+      "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+      "should_answer": true,
+      "reference_answer": "La similarité cosinus.",
+      "expected_terms": [
+        "cosinus"
+      ],
+      "expected_pages": [
+        6
+      ],
+      "answer": "La mesure de similarité utilisée avec les embeddings est la cosine similarity [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 29,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.032266458495966696
+        },
+        {
+          "chunk_id": 30,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.030834914611005692
+        },
+        {
+          "chunk_id": 34,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.029418126757516764
+        },
+        {
+          "chunk_id": 28,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.029418126757516764
+        },
+        {
+          "chunk_id": 32,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.01639344262295082
+        }
+      ],
+      "latency_seconds": 11.715909700025804,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 13,
+      "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+      "should_answer": true,
+      "reference_answer": "FAISS.",
+      "expected_terms": [
+        "faiss"
+      ],
+      "expected_pages": [
+        6
+      ],
+      "answer": "L'outil utilisé est FAISS [Source 5].",
+      "sources": [
+        {
+          "chunk_id": 32,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.032266458495966696
+        },
+        {
+          "chunk_id": 33,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.030621785881252923
+        },
+        {
+          "chunk_id": 34,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.030536130536130537
+        },
+        {
+          "chunk_id": 92,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 30,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 13.166788499976974,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 14,
+      "question": "Quel est l'objectif de la phase pgvector ?",
+      "should_answer": true,
+      "reference_answer": "Utiliser PostgreSQL comme base relationnelle et vectorielle.",
+      "expected_terms": [
+        "postgresql",
+        "vectorielle"
+      ],
+      "expected_pages": [
+        6
+      ],
+      "answer": "L'objectif de la phase pgvector est de utiliser PostgreSQL comme base relationnelle et vectorielle. [Source 5]",
+      "sources": [
+        {
+          "chunk_id": 36,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 7,
+          "score": 0.03278688524590164
+        },
+        {
+          "chunk_id": 97,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 15,
+          "score": 0.031754032258064516
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.030536130536130537
+        },
+        {
+          "chunk_id": 81,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 13,
+          "score": 0.03036576949620428
+        },
+        {
+          "chunk_id": 32,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.029211087420042643
+        }
+      ],
+      "latency_seconds": 13.794820500013884,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 15,
+      "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+      "should_answer": true,
+      "reference_answer": "Le document et la page de la source.",
+      "expected_terms": [
+        "document",
+        "page"
+      ],
+      "expected_pages": [
+        7
+      ],
+      "answer": "Les informations doivent être retournées avec chaque source du RAG, en plus de la source elle-même. [Source 1]",
+      "sources": [
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": 63,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.03007688828584351
+        },
+        {
+          "chunk_id": 39,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 7,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 44,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.016129032258064516
+        },
+        {
+          "chunk_id": 45,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 16.638881499995477,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 16,
+      "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+      "should_answer": true,
+      "reference_answer": "Entre 30 et 50 questions.",
+      "expected_terms": [
+        "30",
+        "50"
+      ],
+      "expected_pages": [
+        8
+      ],
+      "answer": "Le dataset d'évaluation doit contenir entre 30 et 50 questions [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 43,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.032266458495966696
+        },
+        {
+          "chunk_id": 42,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.0315136476426799
+        },
+        {
+          "chunk_id": 78,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 12,
+          "score": 0.03007688828584351
+        },
+        {
+          "chunk_id": 58,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 44,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 15.774511199997505,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 17,
+      "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+      "should_answer": true,
+      "reference_answer": "Recall@1, Recall@3 et Recall@5.",
+      "expected_terms": [
+        "recall@1",
+        "recall@3",
+        "recall@5"
+      ],
+      "expected_pages": [
+        8
+      ],
+      "answer": "Mesurer Recall@1, Recall@3 et Recall@5 du retrieval [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 43,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.032266458495966696
+        },
+        {
+          "chunk_id": 59,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.029910714285714284
+        },
+        {
+          "chunk_id": 45,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 48,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.016129032258064516
+        },
+        {
+          "chunk_id": 11,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 3,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 13.402727000007872,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 18,
+      "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+      "should_answer": true,
+      "reference_answer": "PostgreSQL Full Text Search.",
+      "expected_terms": [
+        "postgresql",
+        "full text"
+      ],
+      "expected_pages": [
+        8
+      ],
+      "answer": "Il n'y a pas de technologie spécifique mentionnée dans le passage pour ajouter une recherche lexicale. [Source 2]",
+      "sources": [
+        {
+          "chunk_id": 25,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 5,
+          "score": 0.03149801587301587
+        },
+        {
+          "chunk_id": 46,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.03128054740957967
+        },
+        {
+          "chunk_id": 29,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.031099324975891997
+        },
+        {
+          "chunk_id": 77,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 12,
+          "score": 0.031099324975891997
+        },
+        {
+          "chunk_id": 32,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.030158730158730156
+        }
+      ],
+      "latency_seconds": 15.936364500026684,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 19,
+      "question": "À quelle condition le reranker doit-il être conservé ?",
+      "should_answer": true,
+      "reference_answer": "Uniquement s'il apporte un gain mesurable avec une latence acceptable.",
+      "expected_terms": [
+        "gain",
+        "latence"
+      ],
+      "expected_pages": [
+        8
+      ],
+      "answer": "Le reranker doit être conservé si il apporte un gain mesurable acceptable en latence [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 48,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.031054405392392875
+        },
+        {
+          "chunk_id": 16,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 4,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 47,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 97,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 15,
+          "score": 0.016129032258064516
+        },
+        {
+          "chunk_id": 55,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 15.699531399994157,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 20,
+      "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+      "should_answer": true,
+      "reference_answer": "Un Dockerfile.",
+      "expected_terms": [
+        "dockerfile"
+      ],
+      "expected_pages": [
+        9
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 15.237800999981118,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 21,
+      "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+      "should_answer": true,
+      "reference_answer": "À conserver les données après le redémarrage du conteneur.",
+      "expected_terms": [
+        "données",
+        "redémarrage"
+      ],
+      "expected_pages": [
+        9
+      ],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 15.55256890002056,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 22,
+      "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+      "should_answer": true,
+      "reference_answer": "Le lint puis les tests.",
+      "expected_terms": [
+        "lint",
+        "tests"
+      ],
+      "expected_pages": [
+        9
+      ],
+      "answer": "L'outil qui doit être exécuté avant de construire l'image Docker est lint [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 54,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.03278688524590164
+        },
+        {
+          "chunk_id": 52,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.03225806451612903
+        },
+        {
+          "chunk_id": 93,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 14,
+          "score": 0.03149801587301587
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.028991596638655463
+        },
+        {
+          "chunk_id": 49,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 8,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 15.069315200002166,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 23,
+      "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+      "should_answer": true,
+      "reference_answer": "Classifier automatiquement les documents par catégorie.",
+      "expected_terms": [
+        "classifier",
+        "documents"
+      ],
+      "expected_pages": [
+        10
+      ],
+      "answer": "Choisir une tâche annexe : classifier automatiquement les documents par catégorie. [Source 5]",
+      "sources": [
+        {
+          "chunk_id": 56,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.03131881575727918
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.030834914611005692
+        },
+        {
+          "chunk_id": 59,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.030536130536130537
+        },
+        {
+          "chunk_id": 53,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 9,
+          "score": 0.01639344262295082
+        },
+        {
+          "chunk_id": 58,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.016129032258064516
+        }
+      ],
+      "latency_seconds": 16.510024000017438,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 24,
+      "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+      "should_answer": true,
+      "reference_answer": "chunk_size, overlap, embedding_model, top_k, reranker et llm.",
+      "expected_terms": [
+        "chunk_size",
+        "top_k",
+        "llm"
+      ],
+      "expected_pages": [
+        10
+      ],
+      "answer": "Logger chunk_size, overlap, embedding_model, top_k, reranker et llm. [Source 1]",
+      "sources": [
+        {
+          "chunk_id": 62,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.032018442622950824
+        },
+        {
+          "chunk_id": 61,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.031754032258064516
+        },
+        {
+          "chunk_id": 2,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 1,
+          "score": 0.031544957774465976
+        },
+        {
+          "chunk_id": 63,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 10,
+          "score": 0.031054405392392875
+        },
+        {
+          "chunk_id": 9,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 2,
+          "score": 0.029418126757516764
+        }
+      ],
+      "latency_seconds": 15.674324599996908,
+      "evaluation_type": "answer",
+      "success": true
+    },
+    {
+      "id": 25,
+      "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+      "should_answer": true,
+      "reference_answer": "search_documents(), query_database() et generate_report().",
+      "expected_terms": [
+        "search_documents",
+        "query_database",
+        "generate_report"
+      ],
+      "expected_pages": [
+        11
+      ],
+      "answer": "L'outil simple doit être \"search_documents()\" [Source 1].",
+      "sources": [
+        {
+          "chunk_id": 69,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 11,
+          "score": 0.03252247488101534
+        },
+        {
+          "chunk_id": 71,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 11,
+          "score": 0.03177805800756621
+        },
+        {
+          "chunk_id": 70,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 11,
+          "score": 0.031754032258064516
+        },
+        {
+          "chunk_id": 7,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 2,
+          "score": 0.02877846790890269
+        },
+        {
+          "chunk_id": 29,
+          "document_id": 1,
+          "document_title": "Guide_Projet_Enterprise_AI_Knowledge_Assistant.pdf",
+          "page_number": 6,
+          "score": 0.015873015873015872
+        }
+      ],
+      "latency_seconds": 15.653904099977808,
+      "evaluation_type": "answer",
+      "success": false
+    },
+    {
+      "id": 26,
+      "question": "Quel est le salaire prévu pour l'ingénieur responsable du projet ?",
+      "should_answer": false,
+      "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "expected_terms": [],
+      "expected_pages": [],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 18.000443099997938,
+      "evaluation_type": "abstention",
+      "success": true
+    },
+    {
+      "id": 27,
+      "question": "Quel est le nom du directeur général de l'entreprise ?",
+      "should_answer": false,
+      "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "expected_terms": [],
+      "expected_pages": [],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 16.054467999987537,
+      "evaluation_type": "abstention",
+      "success": true
+    },
+    {
+      "id": 28,
+      "question": "Quelle voiture doit acheter le développeur du projet ?",
+      "should_answer": false,
+      "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "expected_terms": [],
+      "expected_pages": [],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 16.70140670001274,
+      "evaluation_type": "abstention",
+      "success": true
+    },
+    {
+      "id": 29,
+      "question": "Quelle version exacte de Python est obligatoire pour exécuter le projet ?",
+      "should_answer": false,
+      "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "expected_terms": [],
+      "expected_pages": [],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 14.771521400019992,
+      "evaluation_type": "abstention",
+      "success": true
+    },
+    {
+      "id": 30,
+      "question": "Quel modèle de carte graphique est obligatoire pour exécuter le projet ?",
+      "should_answer": false,
+      "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "expected_terms": [],
+      "expected_pages": [],
+      "answer": "Je ne trouve pas cette information dans les documents fournis.",
+      "sources": [],
+      "latency_seconds": 16.50667329999851,
+      "evaluation_type": "abstention",
+      "success": true
+    }
+  ]
+}

@@ -1,52 +1,242 @@
 [
   {
+    "id": 1,
     "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
     "should_answer": true,
-    "expected_terms": ["postgresql", "pgvector"]
+    "reference_answer": "PostgreSQL avec l'extension pgvector.",
+    "expected_terms": ["postgresql", "vector"],
+    "expected_pages": [6, 7, 14]
   },
   {
+    "id": 2,
     "question": "Quel framework Python est utilisé pour construire l'API backend ?",
     "should_answer": true,
-    "expected_terms": ["fastapi"]
+    "reference_answer": "FastAPI.",
+    "expected_terms": ["fastapi"],
+    "expected_pages": [4]
   },
   {
+    "id": 3,
     "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
     "should_answer": true,
-    "expected_terms": ["ollama"]
+    "reference_answer": "Ollama.",
+    "expected_terms": ["ollama"],
+    "expected_pages": [7]
   },
   {
+    "id": 4,
     "question": "Quel outil est utilisé pour générer les embeddings ?",
     "should_answer": true,
-    "expected_terms": ["sentence transformers"]
+    "reference_answer": "Sentence Transformers avec Hugging Face.",
+    "expected_terms": ["sentence-transformers"],
+    "expected_pages": [6]
   },
   {
+    "id": 5,
     "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
     "should_answer": true,
-    "expected_terms": ["docker"]
+    "reference_answer": "Docker.",
+    "expected_terms": ["docker"],
+    "expected_pages": [8, 9]
   },
   {
-    "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
-    "should_answer": true,
-    "expected_terms": ["commence avec le minimum"]
-  },
-  {
+    "id": 6,
     "question": "Quel est l'objectif de la phase RAG ?",
     "should_answer": true,
-    "expected_terms": ["llm", "chunks"]
+    "reference_answer": "Faire générer une réponse par un LLM uniquement à partir des chunks retrouvés.",
+    "expected_terms": ["llm", "chunks"],
+    "expected_pages": [7]
   },
   {
+    "id": 7,
+    "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+    "should_answer": true,
+    "reference_answer": "Commencer avec le minimum et ne pas encore ajouter LangGraph ou Azure.",
+    "expected_terms": ["minimum", "langgraph", "azure"],
+    "expected_pages": [4]
+  },
+  {
+    "id": 8,
+    "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+    "should_answer": true,
+    "reference_answer": "GET /health.",
+    "expected_terms": ["health"],
+    "expected_pages": [4]
+  },
+  {
+    "id": 9,
+    "question": "Quel endpoint permet d'ajouter un document ?",
+    "should_answer": true,
+    "reference_answer": "POST /documents.",
+    "expected_terms": ["documents"],
+    "expected_pages": [4]
+  },
+  {
+    "id": 10,
+    "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+    "should_answer": true,
+    "reference_answer": "TXT, Markdown puis PDF texte natif.",
+    "expected_terms": ["txt", "markdown", "pdf"],
+    "expected_pages": [5]
+  },
+  {
+    "id": 11,
+    "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+    "should_answer": true,
+    "reference_answer": "Parce que la taille des chunks affecte la qualité du retrieval.",
+    "expected_terms": ["chunks", "retrieval"],
+    "expected_pages": [5, 6]
+  },
+  {
+    "id": 12,
+    "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+    "should_answer": true,
+    "reference_answer": "La similarité cosinus.",
+    "expected_terms": ["cosine"],
+    "expected_pages": [6]
+  },
+  {
+    "id": 13,
+    "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+    "should_answer": true,
+    "reference_answer": "FAISS.",
+    "expected_terms": ["faiss"],
+    "expected_pages": [6]
+  },
+  {
+    "id": 14,
+    "question": "Quel est l'objectif de la phase pgvector ?",
+    "should_answer": true,
+    "reference_answer": "Utiliser PostgreSQL comme base relationnelle et vectorielle.",
+    "expected_terms": ["postgresql", "vectorielle"],
+    "expected_pages": [6]
+  },
+  {
+    "id": 15,
+    "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+    "should_answer": true,
+    "reference_answer": "Le document et la page de la source.",
+    "expected_terms": ["document", "page"],
+    "expected_pages": [7]
+  },
+  {
+    "id": 16,
+    "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+    "should_answer": true,
+    "reference_answer": "Entre 30 et 50 questions.",
+    "expected_terms": ["30", "50"],
+    "expected_pages": [8]
+  },
+  {
+    "id": 17,
+    "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+    "should_answer": true,
+    "reference_answer": "Recall@1, Recall@3 et Recall@5.",
+    "expected_terms": ["recall@1", "recall@3", "recall@5"],
+    "expected_pages": [8]
+  },
+  {
+    "id": 18,
+    "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+    "should_answer": true,
+    "reference_answer": "PostgreSQL Full Text Search.",
+    "expected_terms": ["postgresql", "full text"],
+    "expected_pages": [8]
+  },
+  {
+    "id": 19,
+    "question": "À quelle condition le reranker doit-il être conservé ?",
+    "should_answer": true,
+    "reference_answer": "Uniquement s'il apporte un gain mesurable avec une latence acceptable.",
+    "expected_terms": ["gain", "latence"],
+    "expected_pages": [8]
+  },
+  {
+    "id": 20,
+    "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+    "should_answer": true,
+    "reference_answer": "Un Dockerfile.",
+    "expected_terms": ["dockerfile"],
+    "expected_pages": [9]
+  },
+  {
+    "id": 21,
+    "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+    "should_answer": true,
+    "reference_answer": "À conserver les données après le redémarrage du conteneur.",
+    "expected_terms": ["données", "redémarrage"],
+    "expected_pages": [9]
+  },
+  {
+    "id": 22,
+    "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+    "should_answer": true,
+    "reference_answer": "Le lint puis les tests.",
+    "expected_terms": ["lint", "tests"],
+    "expected_pages": [9]
+  },
+  {
+    "id": 23,
+    "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+    "should_answer": true,
+    "reference_answer": "Classifier automatiquement les documents par catégorie.",
+    "expected_terms": ["classifier", "documents"],
+    "expected_pages": [10]
+  },
+  {
+    "id": 24,
+    "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+    "should_answer": true,
+    "reference_answer": "chunk_size, overlap, embedding_model, top_k, reranker et llm.",
+    "expected_terms": ["chunk_size", "top_k", "llm"],
+    "expected_pages": [10]
+  },
+  {
+    "id": 25,
+    "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+    "should_answer": true,
+    "reference_answer": "search_documents(), query_database() et generate_report().",
+    "expected_terms": ["search_documents", "query_database", "generate_report"],
+    "expected_pages": [11]
+  },
+  {
+    "id": 26,
     "question": "Quel est le salaire prévu pour l'ingénieur responsable du projet ?",
     "should_answer": false,
-    "expected_terms": []
+    "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+    "expected_terms": [],
+    "expected_pages": []
   },
   {
+    "id": 27,
     "question": "Quel est le nom du directeur général de l'entreprise ?",
     "should_answer": false,
-    "expected_terms": []
+    "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+    "expected_terms": [],
+    "expected_pages": []
   },
   {
+    "id": 28,
     "question": "Quelle voiture doit acheter le développeur du projet ?",
     "should_answer": false,
-    "expected_terms": []
+    "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+    "expected_terms": [],
+    "expected_pages": []
+  },
+  {
+    "id": 29,
+    "question": "Quelle version exacte de Python est obligatoire pour exécuter le projet ?",
+    "should_answer": false,
+    "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+    "expected_terms": [],
+    "expected_pages": []
+  },
+  {
+    "id": 30,
+    "question": "Quel modèle de carte graphique est obligatoire pour exécuter le projet ?",
+    "should_answer": false,
+    "reference_answer": "Je ne trouve pas cette information dans les documents fournis.",
+    "expected_terms": [],
+    "expected_pages": []
   }
 ]

@@ -2,20 +2,26 @@ from sqlalchemy.orm import Session
 
 from app.services.llm_service import generate_answer
 from app.services.search_service import hybrid_search
-
+from app.services.reranker_service import rerank_results
 
 def answer_question(
     db: Session,
     question: str,
     top_k: int = 5,
 ) -> dict:
+    candidate_results = hybrid_search(
+        db=db,
+        query=question,
+        top_k=10,
+        candidate_k=10,
+    )
+
     search_results = hybrid_search(
         db=db,
         query=question,
         top_k=top_k,
         candidate_k=10,
     )
-
     if not search_results:
         return {
             "answer": (

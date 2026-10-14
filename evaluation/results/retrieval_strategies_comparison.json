@@ -1,0 +1,6092 @@
+{
+  "name": "retrieval_strategies_comparison",
+  "created_at": "2026-10-12T14:25:25.867626",
+  "configuration": {
+    "dataset_questions": 30,
+    "answerable_questions": 25,
+    "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "embedding_dimension": 384,
+    "chunk_size_tokens": 100,
+    "chunk_overlap_tokens": 20,
+    "max_results": 10,
+    "hybrid_candidate_k": 10,
+    "rrf_k": 60,
+    "reranker_model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
+  },
+  "strategies": [
+    {
+      "name": "vector_semantic",
+      "metrics": {
+        "recall_at_1": 0.52,
+        "recall_at_3": 0.72,
+        "recall_at_5": 0.88,
+        "recall_at_10": 0.96,
+        "average_latency_seconds": 0.04009396799956448
+      },
+      "results": [
+        {
+          "id": 1,
+          "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+          "expected_pages": [
+            6,
+            7,
+            14
+          ],
+          "rank": 1,
+          "latency_seconds": 0.0810011999856215,
+          "top_results": [
+            {
+              "chunk_id": 90,
+              "page_number": 14,
+              "score": 0.5949660716940784
+            },
+            {
+              "chunk_id": 35,
+              "page_number": 7,
+              "score": 0.5928153395652771
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.5805076014693031
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": 0.5761524953978527
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.5756910443305969
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": 0.5733958824512899
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.5676270723342896
+            },
+            {
+              "chunk_id": 88,
+              "page_number": 14,
+              "score": 0.5652113893754128
+            },
+            {
+              "chunk_id": 96,
+              "page_number": 15,
+              "score": 0.5567597482657293
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.5506535172462463
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.07791630001156591,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.6682769060134888
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.5136374235153198
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.4682152271270752
+            },
+            {
+              "chunk_id": 14,
+              "page_number": 4,
+              "score": 0.46780121518366324
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": 0.45744283370503314
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.45525285601615906
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.44628018140792847
+            },
+            {
+              "chunk_id": 72,
+              "page_number": 11,
+              "score": 0.43132254481315613
+            },
+            {
+              "chunk_id": 75,
+              "page_number": 12,
+              "score": 0.42074784164117895
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.41397496545165646
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 2,
+          "latency_seconds": 0.08039869999629445,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.46797163689052
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.458810790145719
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.4427606663619925
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4130579356270415
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.3802470451519788
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.37851228906104784
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.3687400849527198
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.3635609854328927
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.3633462407199288
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.3600202310091327
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "question": "Quel outil est utilisé pour générer les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 2,
+          "latency_seconds": 0.069095799990464,
+          "top_results": [
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.45835825552691634
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.4303676999053597
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.4292657333174792
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4184820901442827
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.4130128097247612
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.4120073318481474
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.40927621181465534
+            },
+            {
+              "chunk_id": 57,
+              "page_number": 9,
+              "score": 0.38515154453841716
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.3737764804096795
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.3708632434443526
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+          "expected_pages": [
+            8,
+            9
+          ],
+          "rank": 5,
+          "latency_seconds": 0.06916369998361915,
+          "top_results": [
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.5702998214423985
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.556759112267604
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.5283765725191659
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.516462026064158
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.5063582356954753
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.506063579790169
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.4966661338012095
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.4921603212165484
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.49117553339296527
+            },
+            {
+              "chunk_id": 96,
+              "page_number": 15,
+              "score": 0.47212508486956606
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Quel est l'objectif de la phase RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.028759100008755922,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.5223891423708721
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.48546326333722656
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4651975929737091
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.45338770747184753
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.4528469443321228
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.4224432110786438
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.3903935667989722
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.3875005841255188
+            },
+            {
+              "chunk_id": 64,
+              "page_number": 10,
+              "score": 0.37005879700534394
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.36894349363277845
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 9,
+          "latency_seconds": 0.03158080001594499,
+          "top_results": [
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.6221809387207031
+            },
+            {
+              "chunk_id": 64,
+              "page_number": 10,
+              "score": 0.5276205258143271
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": 0.4894392490386963
+            },
+            {
+              "chunk_id": 67,
+              "page_number": 11,
+              "score": 0.46210309863090515
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.4415949285030365
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.43262922763824463
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.3985806703567505
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.3926362991333008
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.3906348943710327
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.38938207594698904
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 4,
+          "latency_seconds": 0.026385000004665926,
+          "top_results": [
+            {
+              "chunk_id": 75,
+              "page_number": 12,
+              "score": 0.5725781408045459
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": 0.5470782411466459
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.5343853872281774
+            },
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": 0.5071064233779943
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": 0.5058005753636712
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.48336335917492945
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.47546988579451444
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.47268169792672365
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.4715928120370403
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4711277765707844
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Quel endpoint permet d'ajouter un document ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 9,
+          "latency_seconds": 0.025720299978274852,
+          "top_results": [
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.5225409269332886
+            },
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.4997345209279951
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.48273039070005863
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.4273328312436592
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.4206157922744751
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.4184759855270386
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.41310030221939087
+            },
+            {
+              "chunk_id": 27,
+              "page_number": 6,
+              "score": 0.4124315731268191
+            },
+            {
+              "chunk_id": 15,
+              "page_number": 4,
+              "score": 0.39617329835891724
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.3862796195578808
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+          "expected_pages": [
+            5
+          ],
+          "rank": 1,
+          "latency_seconds": 0.029573500010883436,
+          "top_results": [
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.5498883292045694
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.48513174057006836
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.4406660497188568
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.4379343092441559
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.42513567209243774
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.417255163192749
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.4158711185532149
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.41520438103649804
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.400189942110185
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.3944463259641764
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+          "expected_pages": [
+            5,
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.03477349999593571,
+          "top_results": [
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.5208424019311436
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.49537250427171653
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.4637030522911849
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.3888803488683499
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.381471730382936
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.3638036413426826
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.35950449946495966
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.34539071646984176
+            },
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.34508554070678166
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.34474382729865205
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.029990099981660023,
+          "top_results": [
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.6100000143051147
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.5283193869400399
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.5058093372469754
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.49603331089019775
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.4762413501739502
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.4692130824688998
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.4690605541783739
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.45263683795928955
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.4448479413986206
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.4357008934020996
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 2,
+          "latency_seconds": 0.03475729998899624,
+          "top_results": [
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.562886850919928
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.5030242354579044
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.4729671619226685
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.46471329138537554
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.4525689021518502
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.44774010465980196
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.43703850728502913
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.43313218453920455
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.422137545879558
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.4048594059008185
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "question": "Quel est l'objectif de la phase pgvector ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 2,
+          "latency_seconds": 0.03217329998733476,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.46015593647027475
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.4566442506505328
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.4511399269104004
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.4437189765311539
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4180690050125122
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.40047687292099
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.396755576133728
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.3822791348529384
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.3810804784297943
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.3689090609550476
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.029698099999222904,
+          "top_results": [
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": 0.5716977630583455
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.49993400275117383
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.49966830011228414
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.4852954583134186
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.46138731790071774
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.4610967452314585
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.45850337918113326
+            },
+            {
+              "chunk_id": 90,
+              "page_number": 14,
+              "score": 0.4554279989514358
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.4435543814499141
+            },
+            {
+              "chunk_id": 67,
+              "page_number": 11,
+              "score": 0.4382873569387833
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.03071530000306666,
+          "top_results": [
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.5836556305680065
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": 0.4414701093995701
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.4340396782183463
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.42762949631390024
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.4238362095209549
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": 0.4218280566828292
+            },
+            {
+              "chunk_id": 78,
+              "page_number": 12,
+              "score": 0.41882240772247614
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.40726584196090987
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.4054479486284195
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.4009920717172688
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.026875599985942245,
+          "top_results": [
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.6477026326390477
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.5609754920005838
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.5344469865826966
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.5310337263961876
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.5147114106840746
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4868875734143012
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.484464316634198
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.47557708475453253
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.4640995540678243
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.4638639805195317
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 2,
+          "latency_seconds": 0.026739099994301796,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.6505912334079297
+            },
+            {
+              "chunk_id": 46,
+              "page_number": 8,
+              "score": 0.6228854060173035
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.5070467742397422
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.4873786576164578
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.46307840943336487
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.45960965752601624
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.45824962854385376
+            },
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.4193165052344505
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.4140229348547143
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.40684813261032104
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "question": "À quelle condition le reranker doit-il être conservé ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 4,
+          "latency_seconds": 0.026810100011061877,
+          "top_results": [
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.519943356513977
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.44740963609104045
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.43165886402130127
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.42609996873438283
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.4216062677864003
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.41871267557144165
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.37447492036372965
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": 0.3685188293457031
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.35936437128080057
+            },
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.3540099859237671
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": null,
+          "latency_seconds": 0.03890840001986362,
+          "top_results": [
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.5688418406938419
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.5651628375053406
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.5593740940093994
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.5547337532043457
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.5524377822875977
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.5258076504354278
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.48737993836402893
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.4754999577999115
+            },
+            {
+              "chunk_id": 15,
+              "page_number": 4,
+              "score": 0.46202564239501953
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.45550832417557774
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.031564900011289865,
+          "top_results": [
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.6392843772260479
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.6039880154139997
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.5999437570571942
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.5586947132712945
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.5338023264643756
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.5299898070103054
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.5273247046873158
+            },
+            {
+              "chunk_id": 65,
+              "page_number": 10,
+              "score": 0.49345192391253423
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.44631839438457555
+            },
+            {
+              "chunk_id": 35,
+              "page_number": 7,
+              "score": 0.4445700976508806
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.03771240002242848,
+          "top_results": [
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.6156188020478977
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.5876709327305475
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.49477118222541794
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.4700965249653488
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.459281412320222
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.4311523822980271
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.42689677637200285
+            },
+            {
+              "chunk_id": 96,
+              "page_number": 15,
+              "score": 0.4197515153588671
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.3842608561671297
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.3826617826617833
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 5,
+          "latency_seconds": 0.03211820000433363,
+          "top_results": [
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.5219188047599089
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.5076489448547363
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.49937915802001953
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.4862397611141205
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.4846482421352938
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.4824821352958679
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.4805339121977663
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.47776663568417943
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.47033751010894775
+            },
+            {
+              "chunk_id": 73,
+              "page_number": 11,
+              "score": 0.4676346778869629
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 1,
+          "latency_seconds": 0.030902800004696473,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.7124746441841125
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.6619206666946411
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.6437318921089172
+            },
+            {
+              "chunk_id": 61,
+              "page_number": 10,
+              "score": 0.6410766075758255
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.5950907468795776
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.5858997702598572
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.5345636010169983
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.5236472203521273
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.4932604579109092
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": 0.4862394324683814
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+          "expected_pages": [
+            11
+          ],
+          "rank": 1,
+          "latency_seconds": 0.039015699992887676,
+          "top_results": [
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.613203763961792
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.5329668521881104
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.47129455037680645
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.4681945741176605
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.46319672684689084
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.4442361063675786
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4423005282878876
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.4373308159511803
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.4283999800682068
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.4152722954750061
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lexical_postgresql_fts",
+      "metrics": {
+        "recall_at_1": 0.6,
+        "recall_at_3": 0.84,
+        "recall_at_5": 0.88,
+        "recall_at_10": 0.92,
+        "average_latency_seconds": 0.01559790400438942
+      },
+      "results": [
+        {
+          "id": 1,
+          "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+          "expected_pages": [
+            6,
+            7,
+            14
+          ],
+          "rank": 1,
+          "latency_seconds": 0.024680000002263114,
+          "top_results": [
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 80,
+              "page_number": 13,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 90,
+              "page_number": 14,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.014560100011294708,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.5
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 83,
+              "page_number": 13,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 14,
+              "page_number": 4,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.02126120001776144,
+          "top_results": [
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "question": "Quel outil est utilisé pour générer les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.022312200017040595,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+          "expected_pages": [
+            8,
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.01073579999501817,
+          "top_results": [
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Quel est l'objectif de la phase RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.015062899998156354,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.6
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.3
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.017966600018553436,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 64,
+              "page_number": 10,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 12,
+              "page_number": 3,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 3,
+          "latency_seconds": 0.014723800006322563,
+          "top_results": [
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 27,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 21,
+              "page_number": 5,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Quel endpoint permet d'ajouter un document ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": null,
+          "latency_seconds": 0.015384199999971315,
+          "top_results": [
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 27,
+              "page_number": 6,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+          "expected_pages": [
+            5
+          ],
+          "rank": 2,
+          "latency_seconds": 0.024953999993158504,
+          "top_results": [
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+          "expected_pages": [
+            5,
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.011504900001455098,
+          "top_results": [
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.5
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 38,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 72,
+              "page_number": 11,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.009317399992141873,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.010404699976788834,
+          "top_results": [
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 65,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "question": "Quel est l'objectif de la phase pgvector ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 5,
+          "latency_seconds": 0.011303800012683496,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.5
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 3,
+          "latency_seconds": 0.010767500003566965,
+          "top_results": [
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 38,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 2,
+          "latency_seconds": 0.009622400015359744,
+          "top_results": [
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 78,
+              "page_number": 12,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 5,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.011305300024105236,
+          "top_results": [
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 6,
+          "latency_seconds": 0.015576300007523969,
+          "top_results": [
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 46,
+              "page_number": 8,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "question": "À quelle condition le reranker doit-il être conservé ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.012290899991057813,
+          "top_results": [
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": null,
+          "latency_seconds": 0.01581890002125874,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 14,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.017740399984177202,
+          "top_results": [
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.6
+            },
+            {
+              "chunk_id": 50,
+              "page_number": 9,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.021051400020951405,
+          "top_results": [
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.7
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.2
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 2,
+          "latency_seconds": 0.019507999997586012,
+          "top_results": [
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 12,
+              "page_number": 3,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 2,
+          "latency_seconds": 0.018203299987362698,
+          "top_results": [
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 61,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.1
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.1
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+          "expected_pages": [
+            11
+          ],
+          "rank": 1,
+          "latency_seconds": 0.01389160001417622,
+          "top_results": [
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.5
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.5
+            },
+            {
+              "chunk_id": 72,
+              "page_number": 11,
+              "score": 0.4
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.3
+            },
+            {
+              "chunk_id": 12,
+              "page_number": 3,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 75,
+              "page_number": 12,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.2
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hybrid_rrf",
+      "metrics": {
+        "recall_at_1": 0.72,
+        "recall_at_3": 0.88,
+        "recall_at_5": 0.92,
+        "recall_at_10": 0.92,
+        "average_latency_seconds": 0.0577899360016454
+      },
+      "results": [
+        {
+          "id": 1,
+          "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+          "expected_pages": [
+            6,
+            7,
+            14
+          ],
+          "rank": 1,
+          "latency_seconds": 0.144476699992083,
+          "top_results": [
+            {
+              "chunk_id": 90,
+              "page_number": 14,
+              "score": 0.030679156908665108
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": 0.02964426877470356
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 35,
+              "page_number": 7,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.09408979999716394,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.03225806451612903
+            },
+            {
+              "chunk_id": 14,
+              "page_number": 4,
+              "score": 0.031009615384615385
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 83,
+              "page_number": 13,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": 0.014925373134328358
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.09826329999486916,
+          "top_results": [
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.03252247488101534
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.032018442622950824
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "question": "Quel outil est utilisé pour générer les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.08948279998730868,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.03252247488101534
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+          "expected_pages": [
+            8,
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.09528170002158731,
+          "top_results": [
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.030621785881252923
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.014925373134328358
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.014705882352941176
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Quel est l'objectif de la phase RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.042104899999685585,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.031746031746031744
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.0315136476426799
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.031054405392392875
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": 0.014925373134328358
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 3,
+          "latency_seconds": 0.05191249999916181,
+          "top_results": [
+            {
+              "chunk_id": 64,
+              "page_number": 10,
+              "score": 0.03225806451612903
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.031544957774465976
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.030886196246139225
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": 0.030798389007344232
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.030798389007344232
+            },
+            {
+              "chunk_id": 67,
+              "page_number": 11,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.039712199999485165,
+          "top_results": [
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": 0.030776515151515152
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.030776515151515152
+            },
+            {
+              "chunk_id": 75,
+              "page_number": 12,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Quel endpoint permet d'ajouter un document ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": null,
+          "latency_seconds": 0.04690720001235604,
+          "top_results": [
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.03252247488101534
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.03149801587301587
+            },
+            {
+              "chunk_id": 27,
+              "page_number": 6,
+              "score": 0.030834914611005692
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+          "expected_pages": [
+            5
+          ],
+          "rank": 1,
+          "latency_seconds": 0.0559124999854248,
+          "top_results": [
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.030621785881252923
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.029910714285714284
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.029437229437229435
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+          "expected_pages": [
+            5,
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.04330829999526031,
+          "top_results": [
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.03200204813108039
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.0315136476426799
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.029857397504456328
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.014925373134328358
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.036755100009031594,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.032266458495966696
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.030834914611005692
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.029418126757516764
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": 0.029418126757516764
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.05809400000725873,
+          "top_results": [
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.032266458495966696
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.030621785881252923
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.030536130536130537
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "question": "Quel est l'objectif de la phase pgvector ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 5,
+          "latency_seconds": 0.05104419999406673,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.031754032258064516
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.030536130536130537
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.03036576949620428
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.029211087420042643
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 3,
+          "latency_seconds": 0.04523029999108985,
+          "top_results": [
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.03252247488101534
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.03007688828584351
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 38,
+              "page_number": 7,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.048179499979596585,
+          "top_results": [
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.032266458495966696
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.0315136476426799
+            },
+            {
+              "chunk_id": 78,
+              "page_number": 12,
+              "score": 0.03007688828584351
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.03744189999997616,
+          "top_results": [
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": 0.032266458495966696
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.029910714285714284
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 2,
+          "latency_seconds": 0.03808289999142289,
+          "top_results": [
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": 0.03149801587301587
+            },
+            {
+              "chunk_id": 46,
+              "page_number": 8,
+              "score": 0.03128054740957967
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.031099324975891997
+            },
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": 0.031099324975891997
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 0.030158730158730156
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "question": "À quelle condition le reranker doit-il être conservé ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.035556500020902604,
+          "top_results": [
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": 0.031054405392392875
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": null,
+          "latency_seconds": 0.048221100005321205,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 0.03177805800756621
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.030798389007344232
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.02919863597612958
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.05260000002454035,
+          "top_results": [
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": 0.031754032258064516
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": 0.030798389007344232
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": 0.02964426877470356
+            },
+            {
+              "chunk_id": 50,
+              "page_number": 9,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.05709799999021925,
+          "top_results": [
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 0.03278688524590164
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": 0.03225806451612903
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": 0.03149801587301587
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.028991596638655463
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 3,
+          "latency_seconds": 0.048527900013141334,
+          "top_results": [
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.03131881575727918
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.030834914611005692
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": 0.030536130536130537
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": 0.01639344262295082
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.016129032258064516
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": 0.015384615384615385
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 1,
+          "latency_seconds": 0.04387220001081005,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 0.032018442622950824
+            },
+            {
+              "chunk_id": 61,
+              "page_number": 10,
+              "score": 0.031754032258064516
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": 0.031544957774465976
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 0.031054405392392875
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": 0.029418126757516764
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": 0.015151515151515152
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+          "expected_pages": [
+            11
+          ],
+          "rank": 1,
+          "latency_seconds": 0.04259290001937188,
+          "top_results": [
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 0.03252247488101534
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": 0.03177805800756621
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 0.031754032258064516
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.02877846790890269
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 72,
+              "page_number": 11,
+              "score": 0.015873015873015872
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": 0.015625
+            },
+            {
+              "chunk_id": 12,
+              "page_number": 3,
+              "score": 0.015384615384615385
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": 0.015151515151515152
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": 0.015151515151515152
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hybrid_rrf_plus_reranker",
+      "metrics": {
+        "recall_at_1": 0.72,
+        "recall_at_3": 0.92,
+        "recall_at_5": 0.92,
+        "recall_at_10": 0.92,
+        "average_latency_seconds": 0.35999594800407064
+      },
+      "results": [
+        {
+          "id": 1,
+          "question": "Quelle base de données vectorielle est utilisée dans le projet ?",
+          "expected_pages": [
+            6,
+            7,
+            14
+          ],
+          "rank": 1,
+          "latency_seconds": 0.41568370000459254,
+          "top_results": [
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": -0.10789825022220612
+            },
+            {
+              "chunk_id": 35,
+              "page_number": 7,
+              "score": -3.4249207973480225
+            },
+            {
+              "chunk_id": 90,
+              "page_number": 14,
+              "score": -4.14675760269165
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": -4.215078353881836
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": -4.69049072265625
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": -4.766175746917725
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": -4.895958423614502
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": -5.493698596954346
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": -6.256358623504639
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": -6.8378424644470215
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "question": "Quel framework Python est utilisé pour construire l'API backend ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3743401000101585,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": 6.104843616485596
+            },
+            {
+              "chunk_id": 41,
+              "page_number": 7,
+              "score": -0.40267467498779297
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": -0.4438994526863098
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": -1.714237928390503
+            },
+            {
+              "chunk_id": 83,
+              "page_number": 13,
+              "score": -2.763559579849243
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": -2.9864649772644043
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": -3.251485586166382
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": -3.7331132888793945
+            },
+            {
+              "chunk_id": 14,
+              "page_number": 4,
+              "score": -5.0234198570251465
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": -9.747757911682129
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "question": "Quel outil est utilisé pour exécuter le LLM localement ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 2,
+          "latency_seconds": 0.3851683000102639,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": -0.009920762851834297
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": -1.2615649700164795
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": -2.7607572078704834
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": -2.8298542499542236
+            },
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": -3.5077664852142334
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -3.814246892929077
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": -4.4375224113464355
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": -6.954874515533447
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": -7.3929619789123535
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -8.59727954864502
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "question": "Quel outil est utilisé pour générer les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 2,
+          "latency_seconds": 0.48782480001682416,
+          "top_results": [
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": -2.076200008392334
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": -2.31523060798645
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": -2.46797251701355
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": -3.203204870223999
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": -4.2058868408203125
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": -4.862076282501221
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": -5.482594013214111
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": -5.68279504776001
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": -6.476522922515869
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -6.487534523010254
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "question": "Quelle technologie est utilisée pour conteneuriser le projet ?",
+          "expected_pages": [
+            8,
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.36788700000033714,
+          "top_results": [
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": 0.14978361129760742
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": -1.3719725608825684
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": -2.067878484725952
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -4.067148685455322
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": -4.30232572555542
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": -4.510355472564697
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -4.882213115692139
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": -4.906485557556152
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -5.280566692352295
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": -6.013059139251709
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "question": "Quel est l'objectif de la phase RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.30939589999616146,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 3.2380306720733643
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": 0.5758880972862244
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -1.8518493175506592
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": -2.5018317699432373
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": -4.562875270843506
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": -4.907254219055176
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": -5.975412845611572
+            },
+            {
+              "chunk_id": 76,
+              "page_number": 12,
+              "score": -7.745398044586182
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": -8.37973690032959
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -9.245214462280273
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "question": "Que faut-il faire avant d'utiliser LangGraph ou Azure ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3206959000090137,
+          "top_results": [
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": -0.6014333367347717
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": -0.9314185380935669
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": -3.925793409347534
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": -5.689529895782471
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": -5.764350891113281
+            },
+            {
+              "chunk_id": 67,
+              "page_number": 11,
+              "score": -7.137251377105713
+            },
+            {
+              "chunk_id": 64,
+              "page_number": 10,
+              "score": -7.628313064575195
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": -8.072880744934082
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": -8.131936073303223
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": -8.41350269317627
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "question": "Quel endpoint permet de vérifier que l'API fonctionne ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3264224999875296,
+          "top_results": [
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": -0.8358426690101624
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": -3.6487038135528564
+            },
+            {
+              "chunk_id": 75,
+              "page_number": 12,
+              "score": -4.41334342956543
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": -4.81121301651001
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": -4.820470809936523
+            },
+            {
+              "chunk_id": 94,
+              "page_number": 14,
+              "score": -5.4627485275268555
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": -6.640858173370361
+            },
+            {
+              "chunk_id": 86,
+              "page_number": 13,
+              "score": -6.936689853668213
+            },
+            {
+              "chunk_id": 40,
+              "page_number": 7,
+              "score": -6.976186275482178
+            },
+            {
+              "chunk_id": 13,
+              "page_number": 4,
+              "score": -7.495556354522705
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "question": "Quel endpoint permet d'ajouter un document ?",
+          "expected_pages": [
+            4
+          ],
+          "rank": null,
+          "latency_seconds": 0.32611029999679886,
+          "top_results": [
+            {
+              "chunk_id": 27,
+              "page_number": 6,
+              "score": -1.1640722751617432
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": -3.3431999683380127
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": -3.6735236644744873
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": -3.689642906188965
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": -5.0278167724609375
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": -5.2419819831848145
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": -5.51342248916626
+            },
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": -6.2545084953308105
+            },
+            {
+              "chunk_id": 98,
+              "page_number": 15,
+              "score": -7.131322383880615
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -7.704983234405518
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "question": "Quels formats de documents doivent être pris en charge pendant la phase d'ingestion ?",
+          "expected_pages": [
+            5
+          ],
+          "rank": 2,
+          "latency_seconds": 0.3453824000025634,
+          "top_results": [
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": -2.759674310684204
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": -3.1573407649993896
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": -3.395219087600708
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": -5.325962543487549
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -5.343441486358643
+            },
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": -5.58521032333374
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": -5.715001583099365
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -6.115286350250244
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": -7.846418857574463
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": -8.032367706298828
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "question": "Pourquoi faut-il tester plusieurs tailles de chunks ?",
+          "expected_pages": [
+            5,
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3332168000051752,
+          "top_results": [
+            {
+              "chunk_id": 26,
+              "page_number": 5,
+              "score": 1.602114200592041
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": -2.918813943862915
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": -4.407285213470459
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": -4.668929576873779
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": -5.237438678741455
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": -6.4055562019348145
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -7.831540107727051
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": -8.416794776916504
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": -8.64635181427002
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": -9.17675495147705
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "question": "Quelle mesure de similarité est utilisée avec les embeddings ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.316851499985205,
+          "top_results": [
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": 1.103507399559021
+            },
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": 0.4841976463794708
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": -0.49949315190315247
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": -1.9188226461410522
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": -4.90496826171875
+            },
+            {
+              "chunk_id": 28,
+              "page_number": 6,
+              "score": -4.923366069793701
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -5.625268459320068
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": -6.821988582611084
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": -7.022956371307373
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": -8.464804649353027
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "question": "Quel outil doit être utilisé pour la première indexation vectorielle locale ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 1,
+          "latency_seconds": 0.33445530000608414,
+          "top_results": [
+            {
+              "chunk_id": 30,
+              "page_number": 6,
+              "score": -1.0412003993988037
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": -3.5472450256347656
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": -4.036734580993652
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": -5.34592866897583
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": -5.5934157371521
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": -5.6286091804504395
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -5.825418472290039
+            },
+            {
+              "chunk_id": 31,
+              "page_number": 6,
+              "score": -6.488041400909424
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": -7.118990421295166
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": -10.429533958435059
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "question": "Quel est l'objectif de la phase pgvector ?",
+          "expected_pages": [
+            6
+          ],
+          "rank": 2,
+          "latency_seconds": 0.3486529000219889,
+          "top_results": [
+            {
+              "chunk_id": 36,
+              "page_number": 7,
+              "score": 4.439189910888672
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": 2.357206106185913
+            },
+            {
+              "chunk_id": 33,
+              "page_number": 6,
+              "score": 0.8348962664604187
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": 0.202754408121109
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -1.7948051691055298
+            },
+            {
+              "chunk_id": 34,
+              "page_number": 6,
+              "score": -3.869318723678589
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": -4.024482250213623
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": -5.2035813331604
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": -8.07791805267334
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -9.558972358703613
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "question": "Quelles informations doivent être retournées avec chaque source du RAG ?",
+          "expected_pages": [
+            7
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3195434999943245,
+          "top_results": [
+            {
+              "chunk_id": 38,
+              "page_number": 7,
+              "score": -4.047656536102295
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": -4.1291046142578125
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": -4.235673427581787
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": -4.426682949066162
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -5.166141510009766
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": -5.298678398132324
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": -5.586120128631592
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": -7.821986198425293
+            },
+            {
+              "chunk_id": 79,
+              "page_number": 12,
+              "score": -8.070069313049316
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": -8.89526653289795
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "question": "Combien de questions le dataset d'évaluation doit-il contenir ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3415217000001576,
+          "top_results": [
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": -1.4114274978637695
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": -1.8358372449874878
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -6.113337993621826
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": -6.266611576080322
+            },
+            {
+              "chunk_id": 44,
+              "page_number": 8,
+              "score": -6.286159038543701
+            },
+            {
+              "chunk_id": 39,
+              "page_number": 7,
+              "score": -6.670027256011963
+            },
+            {
+              "chunk_id": 78,
+              "page_number": 12,
+              "score": -7.5190629959106445
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": -7.905637264251709
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": -8.147095680236816
+            },
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": -9.662117958068848
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "question": "Quelles métriques Recall doivent être mesurées pendant l'évaluation ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 2,
+          "latency_seconds": 0.3709528000035789,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": -2.2763378620147705
+            },
+            {
+              "chunk_id": 43,
+              "page_number": 8,
+              "score": -2.465644598007202
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": -3.8222835063934326
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": -4.255176067352295
+            },
+            {
+              "chunk_id": 42,
+              "page_number": 8,
+              "score": -4.295603275299072
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": -4.936682224273682
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": -5.242799282073975
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -5.73801851272583
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -5.827945232391357
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": -7.278351783752441
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "question": "Quelle technologie peut être utilisée pour ajouter une recherche lexicale ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.38598089999868535,
+          "top_results": [
+            {
+              "chunk_id": 46,
+              "page_number": 8,
+              "score": 0.9976858496665955
+            },
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -4.257045745849609
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": -5.264448165893555
+            },
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": -5.495180606842041
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": -6.022592067718506
+            },
+            {
+              "chunk_id": 25,
+              "page_number": 5,
+              "score": -6.124974727630615
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": -6.596255779266357
+            },
+            {
+              "chunk_id": 32,
+              "page_number": 6,
+              "score": -6.802369117736816
+            },
+            {
+              "chunk_id": 77,
+              "page_number": 12,
+              "score": -7.668806552886963
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": -8.766586303710938
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "question": "À quelle condition le reranker doit-il être conservé ?",
+          "expected_pages": [
+            8
+          ],
+          "rank": 1,
+          "latency_seconds": 0.31477510000695474,
+          "top_results": [
+            {
+              "chunk_id": 48,
+              "page_number": 8,
+              "score": -3.7717347145080566
+            },
+            {
+              "chunk_id": 45,
+              "page_number": 8,
+              "score": -5.9057936668396
+            },
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": -6.39497709274292
+            },
+            {
+              "chunk_id": 47,
+              "page_number": 8,
+              "score": -6.705729961395264
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": -7.04068660736084
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": -7.45392370223999
+            },
+            {
+              "chunk_id": 55,
+              "page_number": 9,
+              "score": -8.162364959716797
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -8.594422340393066
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": -8.954667091369629
+            },
+            {
+              "chunk_id": 92,
+              "page_number": 14,
+              "score": -10.124406814575195
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "question": "Quel fichier doit être créé pour conteneuriser FastAPI ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": null,
+          "latency_seconds": 0.3523332000186201,
+          "top_results": [
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.9682995080947876
+            },
+            {
+              "chunk_id": 23,
+              "page_number": 5,
+              "score": -0.15846887230873108
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": -1.1238517761230469
+            },
+            {
+              "chunk_id": 17,
+              "page_number": 4,
+              "score": -1.7687580585479736
+            },
+            {
+              "chunk_id": 19,
+              "page_number": 4,
+              "score": -2.225206136703491
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": -2.5355312824249268
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": -2.9071695804595947
+            },
+            {
+              "chunk_id": 4,
+              "page_number": 1,
+              "score": -3.142042875289917
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": -3.264326333999634
+            },
+            {
+              "chunk_id": 10,
+              "page_number": 3,
+              "score": -6.225396633148193
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "question": "À quoi sert le volume PostgreSQL dans Docker Compose ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3569855999958236,
+          "top_results": [
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": 1.7111856937408447
+            },
+            {
+              "chunk_id": 50,
+              "page_number": 9,
+              "score": 0.5898112654685974
+            },
+            {
+              "chunk_id": 81,
+              "page_number": 13,
+              "score": -3.5788331031799316
+            },
+            {
+              "chunk_id": 84,
+              "page_number": 13,
+              "score": -4.074761867523193
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": -5.736199855804443
+            },
+            {
+              "chunk_id": 22,
+              "page_number": 5,
+              "score": -6.810885429382324
+            },
+            {
+              "chunk_id": 85,
+              "page_number": 13,
+              "score": -6.988831043243408
+            },
+            {
+              "chunk_id": 24,
+              "page_number": 5,
+              "score": -7.096584796905518
+            },
+            {
+              "chunk_id": 95,
+              "page_number": 14,
+              "score": -7.663956165313721
+            },
+            {
+              "chunk_id": 6,
+              "page_number": 2,
+              "score": -7.716383457183838
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "question": "Que doit exécuter la pipeline CI/CD avant de construire l'image Docker ?",
+          "expected_pages": [
+            9
+          ],
+          "rank": 1,
+          "latency_seconds": 0.4015744000207633,
+          "top_results": [
+            {
+              "chunk_id": 54,
+              "page_number": 9,
+              "score": 2.800891876220703
+            },
+            {
+              "chunk_id": 52,
+              "page_number": 9,
+              "score": -0.6522577404975891
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -3.45595383644104
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": -3.4839673042297363
+            },
+            {
+              "chunk_id": 93,
+              "page_number": 14,
+              "score": -3.612938165664673
+            },
+            {
+              "chunk_id": 68,
+              "page_number": 11,
+              "score": -3.673535108566284
+            },
+            {
+              "chunk_id": 49,
+              "page_number": 8,
+              "score": -4.681249141693115
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": -5.335347652435303
+            },
+            {
+              "chunk_id": 51,
+              "page_number": 9,
+              "score": -6.896926403045654
+            },
+            {
+              "chunk_id": 16,
+              "page_number": 4,
+              "score": -7.899257183074951
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "question": "Quelle tâche annexe est proposée pour pratiquer PyTorch ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3510148999921512,
+          "top_results": [
+            {
+              "chunk_id": 58,
+              "page_number": 10,
+              "score": 0.8774936199188232
+            },
+            {
+              "chunk_id": 59,
+              "page_number": 10,
+              "score": -0.6095327138900757
+            },
+            {
+              "chunk_id": 82,
+              "page_number": 13,
+              "score": -1.4380669593811035
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": -3.2103731632232666
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -3.7666921615600586
+            },
+            {
+              "chunk_id": 3,
+              "page_number": 1,
+              "score": -5.60040807723999
+            },
+            {
+              "chunk_id": 11,
+              "page_number": 3,
+              "score": -5.692122459411621
+            },
+            {
+              "chunk_id": 18,
+              "page_number": 4,
+              "score": -6.653566837310791
+            },
+            {
+              "chunk_id": 53,
+              "page_number": 9,
+              "score": -6.952423095703125
+            },
+            {
+              "chunk_id": 1,
+              "page_number": 1,
+              "score": -9.134927749633789
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "question": "Quels paramètres du RAG doivent être suivis avec MLflow ?",
+          "expected_pages": [
+            10
+          ],
+          "rank": 1,
+          "latency_seconds": 0.4244906000094488,
+          "top_results": [
+            {
+              "chunk_id": 62,
+              "page_number": 10,
+              "score": 2.8207626342773438
+            },
+            {
+              "chunk_id": 63,
+              "page_number": 10,
+              "score": 1.01430344581604
+            },
+            {
+              "chunk_id": 61,
+              "page_number": 10,
+              "score": 0.1923384666442871
+            },
+            {
+              "chunk_id": 91,
+              "page_number": 14,
+              "score": 0.05792052298784256
+            },
+            {
+              "chunk_id": 2,
+              "page_number": 1,
+              "score": -0.7771511673927307
+            },
+            {
+              "chunk_id": 8,
+              "page_number": 2,
+              "score": -3.6575276851654053
+            },
+            {
+              "chunk_id": 89,
+              "page_number": 14,
+              "score": -4.279989242553711
+            },
+            {
+              "chunk_id": 9,
+              "page_number": 2,
+              "score": -4.286043643951416
+            },
+            {
+              "chunk_id": 60,
+              "page_number": 10,
+              "score": -7.024755954742432
+            },
+            {
+              "chunk_id": 56,
+              "page_number": 9,
+              "score": -8.1929349899292
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "question": "Quels trois outils simples doivent être créés pour l'agent LangGraph ?",
+          "expected_pages": [
+            11
+          ],
+          "rank": 1,
+          "latency_seconds": 0.3886386000085622,
+          "top_results": [
+            {
+              "chunk_id": 69,
+              "page_number": 11,
+              "score": 8.854903221130371
+            },
+            {
+              "chunk_id": 70,
+              "page_number": 11,
+              "score": 1.9796245098114014
+            },
+            {
+              "chunk_id": 12,
+              "page_number": 3,
+              "score": -1.5631375312805176
+            },
+            {
+              "chunk_id": 71,
+              "page_number": 11,
+              "score": -2.5233185291290283
+            },
+            {
+              "chunk_id": 7,
+              "page_number": 2,
+              "score": -4.10026741027832
+            },
+            {
+              "chunk_id": 72,
+              "page_number": 11,
+              "score": -4.388077259063721
+            },
+            {
+              "chunk_id": 37,
+              "page_number": 7,
+              "score": -5.33230447769165
+            },
+            {
+              "chunk_id": 97,
+              "page_number": 15,
+              "score": -6.7857489585876465
+            },
+            {
+              "chunk_id": 29,
+              "page_number": 6,
+              "score": -6.88335657119751
+            },
+            {
+              "chunk_id": 74,
+              "page_number": 12,
+              "score": -8.042386054992676
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
