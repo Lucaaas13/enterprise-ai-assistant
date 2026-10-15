@@ -1,15 +1,11 @@
 from app.database.database import SessionLocal
 from app.services.search_service import (
+    hybrid_search,
     lexical_search,
     semantic_search,
-    hybrid_search,
 )
 
-
-QUESTION = (
-    "Quel outil est utilisé pour exécuter "
-    "le LLM localement ?"
-)
+QUESTION = "Quel outil est utilisé pour exécuter le LLM localement ?"
 
 
 def show_results(name, results):
@@ -28,10 +24,7 @@ def show_results(name, results):
             f"score={result['score']:.6f}"
         )
 
-        print(
-            result["content"][:250]
-            .replace("\n", " ")
-        )
+        print(result["content"][:250].replace("\n", " "))
 
         print()
 

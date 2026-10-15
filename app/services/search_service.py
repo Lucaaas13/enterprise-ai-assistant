@@ -1,10 +1,12 @@
-from sqlalchemy import func,select
+import re
+
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.models.chunk import Chunk
-from app.services.embedding_service import create_embedding
 from app.models.document import Document
-import re
+from app.services.embedding_service import create_embedding
+
 
 def semantic_search(
     db: Session,
@@ -13,24 +15,22 @@ def semantic_search(
 ) -> list[dict]:
     query_embedding = create_embedding(query).tolist()
 
-    distance = Chunk.embedding.cosine_distance(
-        query_embedding
-    )
+    distance = Chunk.embedding.cosine_distance(query_embedding)
 
     statement = (
-    select(
-        Chunk,
-        Document.title,
-        distance.label("distance"),
+        select(
+            Chunk,
+            Document.title,
+            distance.label("distance"),
+        )
+        .join(
+            Document,
+            Document.id == Chunk.document_id,
+        )
+        .where(Chunk.embedding.is_not(None))
+        .order_by(distance)
+        .limit(top_k)
     )
-    .join(
-        Document,
-        Document.id == Chunk.document_id,
-    )
-    .where(Chunk.embedding.is_not(None))
-    .order_by(distance)
-    .limit(top_k)
-)
 
     rows = db.execute(statement).all()
     results = []
@@ -50,6 +50,7 @@ def semantic_search(
         )
 
     return results
+
 
 STOP_WORDS = {
     "quel",
@@ -89,14 +90,10 @@ def build_lexical_query(query: str) -> str:
         query.lower(),
     )
 
-    terms = [
-        word
-        for word in words
-        if word not in STOP_WORDS
-        and len(word) >= 3
-    ]
+    terms = [word for word in words if word not in STOP_WORDS and len(word) >= 3]
 
     return " OR ".join(terms)
+
 
 def lexical_search(
     db: Session,
@@ -133,12 +130,8 @@ def lexical_search(
             Document,
             Document.id == Chunk.document_id,
         )
-        .where(
-            ts_vector.op("@@")(ts_query)
-        )
-        .order_by(
-            lexical_score.desc()
-        )
+        .where(ts_vector.op("@@")(ts_query))
+        .order_by(lexical_score.desc())
         .limit(top_k)
     )
 
@@ -156,7 +149,7 @@ def lexical_search(
         for chunk, document_title, score in rows
     ]
 
-    
+
 def hybrid_search(
     db: Session,
     query: str,
@@ -190,9 +183,7 @@ def hybrid_search(
             "rrf_score": 0.0,
         }
 
-        combined[chunk_id]["rrf_score"] += (
-            1 / (rrf_k + rank)
-        )
+        combined[chunk_id]["rrf_score"] += 1 / (rrf_k + rank)
 
     for rank, result in enumerate(
         lexical_results,
@@ -206,9 +197,7 @@ def hybrid_search(
                 "rrf_score": 0.0,
             }
 
-        combined[chunk_id]["rrf_score"] += (
-            1 / (rrf_k + rank)
-        )
+        combined[chunk_id]["rrf_score"] += 1 / (rrf_k + rank)
 
     ranked_results = sorted(
         combined.values(),
@@ -217,6 +206,5 @@ def hybrid_search(
     )
     for result in ranked_results:
         result["score"] = result["rrf_score"]
-
 
     return ranked_results[:top_k]

@@ -8,8 +8,6 @@ from sqlalchemy.orm import sessionmaker
 
 from app.database.database import Base, get_db
 from app.main import app
-from app.models.document import Document
-
 
 load_dotenv()
 
@@ -27,6 +25,8 @@ TestingSessionLocal = sessionmaker(
     bind=test_engine,
 )
 
+with test_engine.begin() as connection:
+    connection.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
 
 Base.metadata.create_all(bind=test_engine)
 
@@ -48,9 +48,7 @@ client = TestClient(app)
 @pytest.fixture(autouse=True)
 def reset_database():
     with test_engine.begin() as connection:
-        connection.execute(
-            text("TRUNCATE TABLE documents RESTART IDENTITY CASCADE")
-        )
+        connection.execute(text("TRUNCATE TABLE documents RESTART IDENTITY CASCADE"))
 
 
 def test_health_check():

@@ -1,13 +1,13 @@
 from app.services.embedding_service import (
-    create_embedding,
     cosine_similarity,
+    create_embedding,
+    get_embedding_model,
 )
-from app.services.embedding_service import get_embedding_model
-
 
 model = get_embedding_model()
 
 print("Longueur maximale :", model.max_seq_length)
+
 
 def main():
     text_a = "PostgreSQL est utilisé pour stocker les données."

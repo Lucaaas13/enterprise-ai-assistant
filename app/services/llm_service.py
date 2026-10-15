@@ -1,7 +1,6 @@
-import httpx
-
-
 import os
+
+import httpx
 
 OLLAMA_URL = os.getenv(
     "OLLAMA_URL",
@@ -12,6 +11,7 @@ MODEL_NAME = os.getenv(
     "OLLAMA_MODEL",
     "qwen2.5:3b",
 )
+
 
 def build_prompt(
     question: str,

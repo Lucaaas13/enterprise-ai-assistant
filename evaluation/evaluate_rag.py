@@ -6,24 +6,16 @@ from pathlib import Path
 from app.database.database import SessionLocal
 from app.services.rag_service import answer_question
 
-
 QUESTIONS_FILE = Path(__file__).parent / "questions.json"
 
 RESULTS_DIR = Path(__file__).parent / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
 
-NO_ANSWER = (
-    "Je ne trouve pas cette information "
-    "dans les documents fournis."
-)
+NO_ANSWER = "Je ne trouve pas cette information dans les documents fournis."
 
 
 def normalize_text(text: str) -> str:
-    return (
-        text.lower()
-        .replace("-", " ")
-        .replace("_", " ")
-    )
+    return text.lower().replace("-", " ").replace("_", " ")
 
 
 def answer_contains_expected_terms(
@@ -35,10 +27,7 @@ def answer_contains_expected_terms(
 
     normalized_answer = normalize_text(answer)
 
-    return all(
-        normalize_text(term) in normalized_answer
-        for term in expected_terms
-    )
+    return all(normalize_text(term) in normalized_answer for term in expected_terms)
 
 
 def main():
@@ -72,10 +61,7 @@ def main():
 
         answer_question(
             db=db,
-            question=(
-                "Quelle technologie est utilisée "
-                "dans le projet ?"
-            ),
+            question=("Quelle technologie est utilisée dans le projet ?"),
             top_k=5,
         )
 
@@ -96,10 +82,7 @@ def main():
                 top_k=5,
             )
 
-            latency = (
-                time.perf_counter()
-                - start
-            )
+            latency = time.perf_counter() - start
 
             latencies.append(latency)
 
@@ -120,19 +103,14 @@ def main():
             if item["should_answer"]:
                 answerable_total += 1
 
-                is_abstention = (
-                    normalize_text(NO_ANSWER)
-                    in normalize_text(answer)
-                )
+                is_abstention = normalize_text(NO_ANSWER) in normalize_text(answer)
 
                 if is_abstention:
                     success = False
                 else:
-                    success = (
-                        answer_contains_expected_terms(
-                            answer,
-                            item["expected_terms"],
-                        )
+                    success = answer_contains_expected_terms(
+                        answer,
+                        item["expected_terms"],
                     )
 
                 evaluation_type = "answer"
@@ -154,10 +132,7 @@ def main():
             else:
                 unanswerable_total += 1
 
-                refused = (
-                    normalize_text(NO_ANSWER)
-                    in normalize_text(answer)
-                )
+                refused = normalize_text(NO_ANSWER) in normalize_text(answer)
 
                 success = refused
                 evaluation_type = "abstention"
@@ -171,33 +146,20 @@ def main():
                 else:
                     hallucinations += 1
 
-                    print(
-                        "ABSTENTION : ECHEC "
-                        "- hallucination potentielle"
-                    )
+                    print("ABSTENTION : ECHEC - hallucination potentielle")
 
             evaluation_results.append(
                 {
                     "id": item["id"],
                     "question": question,
-                    "should_answer": (
-                        item["should_answer"]
-                    ),
-                    "reference_answer": (
-                        item["reference_answer"]
-                    ),
-                    "expected_terms": (
-                        item["expected_terms"]
-                    ),
-                    "expected_pages": (
-                        item["expected_pages"]
-                    ),
+                    "should_answer": (item["should_answer"]),
+                    "reference_answer": (item["reference_answer"]),
+                    "expected_terms": (item["expected_terms"]),
+                    "expected_pages": (item["expected_pages"]),
                     "answer": answer,
                     "sources": sources,
                     "latency_seconds": latency,
-                    "evaluation_type": (
-                        evaluation_type
-                    ),
+                    "evaluation_type": (evaluation_type),
                     "success": success,
                 }
             )
@@ -209,32 +171,13 @@ def main():
     print("=" * 70)
     print("RESULTATS RAG")
 
-    accuracy = (
-        correct / total
-        if total
-        else 0.0
-    )
+    accuracy = correct / total if total else 0.0
 
-    answerable_accuracy = (
-        answerable_correct
-        / answerable_total
-        if answerable_total
-        else 0.0
-    )
+    answerable_accuracy = answerable_correct / answerable_total if answerable_total else 0.0
 
-    abstention_accuracy = (
-        unanswerable_correct
-        / unanswerable_total
-        if unanswerable_total
-        else 0.0
-    )
+    abstention_accuracy = unanswerable_correct / unanswerable_total if unanswerable_total else 0.0
 
-    average_latency = (
-        sum(latencies)
-        / len(latencies)
-        if latencies
-        else 0.0
-    )
+    average_latency = sum(latencies) / len(latencies) if latencies else 0.0
 
     print(
         "Accuracy globale :",
@@ -265,11 +208,7 @@ def main():
         "name": "rag_baseline",
         "created_at": datetime.now().isoformat(),
         "configuration": {
-            "embedding_model": (
-                "sentence-transformers/"
-                "paraphrase-multilingual-"
-                "MiniLM-L12-v2"
-            ),
+            "embedding_model": ("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"),
             "embedding_dimension": 384,
             "chunk_size_tokens": 100,
             "chunk_overlap_tokens": 20,
@@ -282,33 +221,20 @@ def main():
         },
         "dataset": {
             "total_questions": total,
-            "answerable_questions": (
-                answerable_total
-            ),
-            "unanswerable_questions": (
-                unanswerable_total
-            ),
+            "answerable_questions": (answerable_total),
+            "unanswerable_questions": (unanswerable_total),
         },
         "metrics": {
             "accuracy": accuracy,
-            "answerable_accuracy": (
-                answerable_accuracy
-            ),
-            "abstention_accuracy": (
-                abstention_accuracy
-            ),
+            "answerable_accuracy": (answerable_accuracy),
+            "abstention_accuracy": (abstention_accuracy),
             "hallucinations": hallucinations,
-            "average_latency_seconds": (
-                average_latency
-            ),
+            "average_latency_seconds": (average_latency),
         },
         "results": evaluation_results,
     }
 
-    output_file = (
-        RESULTS_DIR
-        / "rag_baseline.json"
-    )
+    output_file = RESULTS_DIR / "rag_baseline.json"
 
     with open(
         output_file,

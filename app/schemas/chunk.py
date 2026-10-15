@@ -8,6 +8,4 @@ class ChunkResponse(BaseModel):
     chunk_index: int
     content: str
 
-    model_config = ConfigDict(
-        from_attributes=True
-    )
+    model_config = ConfigDict(from_attributes=True)

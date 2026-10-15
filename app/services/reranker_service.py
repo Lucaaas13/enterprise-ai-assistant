@@ -2,18 +2,12 @@ from functools import lru_cache
 
 from sentence_transformers import CrossEncoder
 
-
-RERANKER_MODEL = (
-    "cross-encoder/"
-    "mmarco-mMiniLMv2-L12-H384-v1"
-)
+RERANKER_MODEL = "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
 
 
 @lru_cache
 def get_reranker() -> CrossEncoder:
-    return CrossEncoder(
-        RERANKER_MODEL
-    )
+    return CrossEncoder(RERANKER_MODEL)
 
 
 def rerank_results(
@@ -44,18 +38,12 @@ def rerank_results(
     ):
         reranked_result = result.copy()
 
-        reranked_result[
-            "reranker_score"
-        ] = float(score)
+        reranked_result["reranker_score"] = float(score)
 
-        reranked_results.append(
-            reranked_result
-        )
+        reranked_results.append(reranked_result)
 
     reranked_results.sort(
-        key=lambda result: (
-            result["reranker_score"]
-        ),
+        key=lambda result: result["reranker_score"],
         reverse=True,
     )
 

@@ -6,7 +6,6 @@ from pathlib import Path
 from app.database.database import SessionLocal
 from app.services.search_service import semantic_search
 
-
 QUESTIONS_FILE = Path(__file__).parent / "questions.json"
 
 RESULTS_DIR = Path(__file__).parent / "results"
@@ -72,10 +71,7 @@ def main():
                 top_k=10,
             )
 
-            latency = (
-                time.perf_counter()
-                - start
-            )
+            latency = time.perf_counter() - start
 
             latencies.append(latency)
 
@@ -108,10 +104,7 @@ def main():
                 )
 
                 if rank is None:
-                    print(
-                        "PASSAGE ATTENDU : "
-                        "NON TROUVE DANS LE TOP 10"
-                    )
+                    print("PASSAGE ATTENDU : NON TROUVE DANS LE TOP 10")
 
                     print()
                     print("TOP 3 RETOURNES :")
@@ -120,15 +113,10 @@ def main():
                         results[:3],
                         start=1,
                     ):
-                        preview = (
-                            result["content"][:300]
-                            .replace("\n", " ")
-                        )
+                        preview = result["content"][:300].replace("\n", " ")
 
                         print(
-                            f"{index}. "
-                            f"score={result['score']:.4f} | "
-                            f"page={result['page_number']}"
+                            f"{index}. score={result['score']:.4f} | page={result['page_number']}"
                         )
 
                         print(preview)
@@ -157,9 +145,7 @@ def main():
                         "id": item["id"],
                         "question": question,
                         "should_answer": True,
-                        "expected_pages": item[
-                            "expected_pages"
-                        ],
+                        "expected_pages": item["expected_pages"],
                         "rank": rank,
                         "top_score": top_score,
                         "latency_seconds": latency,
@@ -191,25 +177,13 @@ def main():
     metrics = {}
 
     if total_answerable:
-        recall_1 = (
-            recall_at_1
-            / total_answerable
-        )
+        recall_1 = recall_at_1 / total_answerable
 
-        recall_3 = (
-            recall_at_3
-            / total_answerable
-        )
+        recall_3 = recall_at_3 / total_answerable
 
-        recall_5 = (
-            recall_at_5
-            / total_answerable
-        )
+        recall_5 = recall_at_5 / total_answerable
 
-        recall_10 = (
-            recall_at_10
-            / total_answerable
-        )
+        recall_10 = recall_at_10 / total_answerable
 
         metrics["recall_at_1"] = recall_1
         metrics["recall_at_3"] = recall_3
@@ -239,14 +213,9 @@ def main():
     average_latency = 0.0
 
     if latencies:
-        average_latency = (
-            sum(latencies)
-            / len(latencies)
-        )
+        average_latency = sum(latencies) / len(latencies)
 
-        metrics[
-            "average_latency_seconds"
-        ] = average_latency
+        metrics["average_latency_seconds"] = average_latency
 
         print(
             "Latence moyenne :",
@@ -257,39 +226,23 @@ def main():
         "name": "vector_retrieval_baseline",
         "created_at": datetime.now().isoformat(),
         "configuration": {
-            "retrieval": (
-                "pgvector_semantic_search"
-            ),
-            "embedding_model": (
-                "sentence-transformers/"
-                "paraphrase-multilingual-"
-                "MiniLM-L12-v2"
-            ),
+            "retrieval": ("pgvector_semantic_search"),
+            "embedding_model": ("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"),
             "embedding_dimension": 384,
             "chunk_size_tokens": 100,
             "chunk_overlap_tokens": 20,
             "max_results": 10,
         },
         "dataset": {
-            "total_questions": len(
-                questions
-            ),
-            "answerable_questions": (
-                total_answerable
-            ),
-            "unanswerable_questions": (
-                len(questions)
-                - total_answerable
-            ),
+            "total_questions": len(questions),
+            "answerable_questions": (total_answerable),
+            "unanswerable_questions": (len(questions) - total_answerable),
         },
         "metrics": metrics,
         "results": evaluation_results,
     }
 
-    output_file = (
-        RESULTS_DIR
-        / "retrieval_vector_baseline.json"
-    )
+    output_file = RESULTS_DIR / "retrieval_vector_baseline.json"
 
     with open(
         output_file,

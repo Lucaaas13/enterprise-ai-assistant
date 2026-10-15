@@ -3,9 +3,8 @@ import time
 from pathlib import Path
 
 from app.database.database import SessionLocal
-from app.services.search_service import hybrid_search
 from app.services.reranker_service import rerank_results
-
+from app.services.search_service import hybrid_search
 
 QUESTIONS_FILE = Path(__file__).parent / "questions.json"
 
@@ -78,10 +77,7 @@ def evaluate_configuration(
                 top_k=rerank_top_k,
             )
 
-            latency = (
-                time.perf_counter()
-                - start
-            )
+            latency = time.perf_counter() - start
 
             rank = find_expected_rank(
                 results,
@@ -97,15 +93,7 @@ def evaluate_configuration(
     total = len(ranks)
 
     def recall_at(k):
-        return (
-            sum(
-                1
-                for rank in ranks
-                if rank is not None
-                and rank <= k
-            )
-            / total
-        )
+        return sum(1 for rank in ranks if rank is not None and rank <= k) / total
 
     return {
         "candidate_k": candidate_k,
@@ -113,10 +101,7 @@ def evaluate_configuration(
         "recall_at_1": recall_at(1),
         "recall_at_3": recall_at(3),
         "recall_at_5": recall_at(5),
-        "average_latency": (
-            sum(latencies)
-            / len(latencies)
-        ),
+        "average_latency": (sum(latencies) / len(latencies)),
     }
 
 
@@ -167,14 +152,7 @@ def main():
     print("COMPARAISON RERANKER")
     print("=" * 78)
 
-    print(
-        f"{'CANDIDATS':>10}"
-        f"{'TOP K':>10}"
-        f"{'R@1':>10}"
-        f"{'R@3':>10}"
-        f"{'R@5':>10}"
-        f"{'LATENCE':>14}"
-    )
+    print(f"{'CANDIDATS':>10}{'TOP K':>10}{'R@1':>10}{'R@3':>10}{'R@5':>10}{'LATENCE':>14}")
 
     print("-" * 78)
 

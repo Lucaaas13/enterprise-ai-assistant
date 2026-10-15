@@ -21,6 +21,7 @@ class RagSource(BaseModel):
     page_number: int
     score: float
 
+
 class RagResponse(BaseModel):
     answer: str
     sources: list[RagSource]

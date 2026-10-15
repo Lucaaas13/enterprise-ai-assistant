@@ -7,7 +7,6 @@ from app.services.embedding_service import (
     get_embedding_model,
 )
 
-
 CHUNK_MAX_TOKENS = 100
 CHUNK_OVERLAP_TOKENS = 20
 
@@ -18,9 +17,7 @@ def chunk_text(
     overlap_tokens: int = CHUNK_OVERLAP_TOKENS,
 ) -> list[str]:
     if overlap_tokens >= max_tokens:
-        raise ValueError(
-            "overlap_tokens must be smaller than max_tokens"
-        )
+        raise ValueError("overlap_tokens must be smaller than max_tokens")
 
     if not text.strip():
         return []
@@ -53,9 +50,7 @@ def chunk_text(
         char_start = offsets[start_token][0]
         char_end = offsets[end_token - 1][1]
 
-        chunk = text[
-            char_start:char_end
-        ].strip()
+        chunk = text[char_start:char_end].strip()
 
         if chunk:
             chunks.append(chunk)
@@ -103,14 +98,6 @@ def get_chunks_by_document(
     db: Session,
     document_id: int,
 ) -> list[Chunk]:
-    statement = (
-        select(Chunk)
-        .where(
-            Chunk.document_id == document_id
-        )
-        .order_by(Chunk.chunk_index)
-    )
+    statement = select(Chunk).where(Chunk.document_id == document_id).order_by(Chunk.chunk_index)
 
-    return list(
-        db.scalars(statement).all()
-    )
+    return list(db.scalars(statement).all())

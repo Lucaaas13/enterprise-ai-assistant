@@ -4,23 +4,19 @@ from datetime import datetime
 from pathlib import Path
 
 from app.database.database import SessionLocal
-from app.services.search_service import (
-    semantic_search,
-    lexical_search,
-    hybrid_search,
-)
 from app.services.reranker_service import rerank_results
-
+from app.services.search_service import (
+    hybrid_search,
+    lexical_search,
+    semantic_search,
+)
 
 QUESTIONS_FILE = Path(__file__).parent / "questions.json"
 
 RESULTS_DIR = Path(__file__).parent / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
 
-OUTPUT_FILE = (
-    RESULTS_DIR
-    / "retrieval_strategies_comparison.json"
-)
+OUTPUT_FILE = RESULTS_DIR / "retrieval_strategies_comparison.json"
 
 
 def find_expected_rank(
@@ -56,28 +52,18 @@ def compute_metrics(
         }
 
     def recall_at(k: int) -> float:
-        successes = sum(
-            1
-            for rank in ranks
-            if rank is not None and rank <= k
-        )
+        successes = sum(1 for rank in ranks if rank is not None and rank <= k)
 
         return successes / total
 
-    average_latency = (
-        sum(latencies) / len(latencies)
-        if latencies
-        else 0.0
-    )
+    average_latency = sum(latencies) / len(latencies) if latencies else 0.0
 
     return {
         "recall_at_1": recall_at(1),
         "recall_at_3": recall_at(3),
         "recall_at_5": recall_at(5),
         "recall_at_10": recall_at(10),
-        "average_latency_seconds": (
-            average_latency
-        ),
+        "average_latency_seconds": (average_latency),
     }
 
 
@@ -111,10 +97,7 @@ def run_strategy(
                 question,
             )
 
-            latency = (
-                time.perf_counter()
-                - start
-            )
+            latency = time.perf_counter() - start
 
             rank = find_expected_rank(
                 results,
@@ -131,9 +114,7 @@ def run_strategy(
             )
 
             if rank is None:
-                print(
-                    "Rang attendu : NON TROUVE"
-                )
+                print("Rang attendu : NON TROUVE")
             else:
                 print(
                     "Rang attendu :",
@@ -149,19 +130,13 @@ def run_strategy(
                 {
                     "id": item["id"],
                     "question": question,
-                    "expected_pages": (
-                        item["expected_pages"]
-                    ),
+                    "expected_pages": (item["expected_pages"]),
                     "rank": rank,
                     "latency_seconds": latency,
                     "top_results": [
                         {
-                            "chunk_id": result[
-                                "chunk_id"
-                            ],
-                            "page_number": result[
-                                "page_number"
-                            ],
+                            "chunk_id": result["chunk_id"],
+                            "page_number": result["page_number"],
                             "score": result.get(
                                 "reranker_score",
                                 result.get("score"),
@@ -205,9 +180,7 @@ def run_strategy(
 
     print(
         "Latence moyenne :",
-        (
-            f"{metrics['average_latency_seconds']:.3f}s"
-        ),
+        (f"{metrics['average_latency_seconds']:.3f}s"),
     )
 
     return {
@@ -225,11 +198,7 @@ def main():
     ) as file:
         questions = json.load(file)
 
-    answerable_questions = [
-        item
-        for item in questions
-        if item["should_answer"]
-    ]
+    answerable_questions = [item for item in questions if item["should_answer"]]
 
     print(
         "Questions répondables :",
@@ -237,9 +206,7 @@ def main():
     )
 
     print()
-    print(
-        "Warm-up embeddings et reranker..."
-    )
+    print("Warm-up embeddings et reranker...")
 
     warmup_db = SessionLocal()
 
@@ -276,8 +243,7 @@ def main():
             name="vector_semantic",
             questions=questions,
             search_function=(
-                lambda db, query:
-                semantic_search(
+                lambda db, query: semantic_search(
                     db=db,
                     query=query,
                     top_k=10,
@@ -291,8 +257,7 @@ def main():
             name="lexical_postgresql_fts",
             questions=questions,
             search_function=(
-                lambda db, query:
-                lexical_search(
+                lambda db, query: lexical_search(
                     db=db,
                     query=query,
                     top_k=10,
@@ -306,8 +271,7 @@ def main():
             name="hybrid_rrf",
             questions=questions,
             search_function=(
-                lambda db, query:
-                hybrid_search(
+                lambda db, query: hybrid_search(
                     db=db,
                     query=query,
                     top_k=10,
@@ -338,42 +302,24 @@ def main():
         run_strategy(
             name="hybrid_rrf_plus_reranker",
             questions=questions,
-            search_function=(
-                hybrid_with_reranker
-            ),
+            search_function=(hybrid_with_reranker),
         )
     )
 
     benchmark = {
-        "name": (
-            "retrieval_strategies_comparison"
-        ),
-        "created_at": (
-            datetime.now().isoformat()
-        ),
+        "name": ("retrieval_strategies_comparison"),
+        "created_at": (datetime.now().isoformat()),
         "configuration": {
-            "dataset_questions": len(
-                questions
-            ),
-            "answerable_questions": len(
-                answerable_questions
-            ),
-            "embedding_model": (
-                "sentence-transformers/"
-                "paraphrase-multilingual-"
-                "MiniLM-L12-v2"
-            ),
+            "dataset_questions": len(questions),
+            "answerable_questions": len(answerable_questions),
+            "embedding_model": ("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"),
             "embedding_dimension": 384,
             "chunk_size_tokens": 100,
             "chunk_overlap_tokens": 20,
             "max_results": 10,
             "hybrid_candidate_k": 10,
             "rrf_k": 60,
-            "reranker_model": (
-                "cross-encoder/"
-                "mmarco-mMiniLMv2-"
-                "L12-H384-v1"
-            ),
+            "reranker_model": ("cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"),
         },
         "strategies": strategies,
     }
@@ -395,14 +341,7 @@ def main():
     print("COMPARAISON FINALE")
     print("=" * 80)
 
-    print(
-        f"{'STRATEGIE':<30}"
-        f"{'R@1':>8}"
-        f"{'R@3':>8}"
-        f"{'R@5':>8}"
-        f"{'R@10':>8}"
-        f"{'LATENCE':>12}"
-    )
+    print(f"{'STRATEGIE':<30}{'R@1':>8}{'R@3':>8}{'R@5':>8}{'R@10':>8}{'LATENCE':>12}")
 
     print("-" * 74)
 

@@ -3,11 +3,7 @@ from functools import lru_cache
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-
-MODEL_NAME = (
-    "sentence-transformers/"
-    "paraphrase-multilingual-MiniLM-L12-v2"
-)
+MODEL_NAME = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
 
 @lru_cache

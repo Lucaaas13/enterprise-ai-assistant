@@ -5,7 +5,6 @@ from app.database.database import get_db
 from app.schemas.search import SearchRequest, SearchResult
 from app.services.search_service import semantic_search
 
-
 router = APIRouter(
     prefix="/search",
     tags=["Search"],

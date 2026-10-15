@@ -2,20 +2,13 @@ from app.database.database import SessionLocal
 from app.models.chunk import Chunk
 from app.services.llm_service import generate_answer
 
-
 TESTS = [
     {
-        "question": (
-            "Quel outil est utilisé pour exécuter "
-            "le LLM localement ?"
-        ),
+        "question": ("Quel outil est utilisé pour exécuter le LLM localement ?"),
         "chunk_id": 37,
     },
     {
-        "question": (
-            "Que faut-il faire avant d'utiliser "
-            "LangGraph ou Azure ?"
-        ),
+        "question": ("Que faut-il faire avant d'utiliser LangGraph ou Azure ?"),
         "chunk_id": 17,
     },
 ]
@@ -32,9 +25,7 @@ def main():
             )
 
             if chunk is None:
-                print(
-                    f"Chunk {test['chunk_id']} introuvable"
-                )
+                print(f"Chunk {test['chunk_id']} introuvable")
                 continue
 
             context = f"""

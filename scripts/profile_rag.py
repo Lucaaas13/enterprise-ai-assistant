@@ -1,14 +1,10 @@
 import time
 
 from app.database.database import SessionLocal
-from app.services.search_service import hybrid_search
 from app.services.llm_service import call_ollama
+from app.services.search_service import hybrid_search
 
-
-QUESTION = (
-    "Quelle base de données vectorielle "
-    "est utilisée dans le projet ?"
-)
+QUESTION = "Quelle base de données vectorielle est utilisée dans le projet ?"
 
 
 def main():
@@ -46,10 +42,7 @@ def main():
             candidate_k=10,
         )
 
-        retrieval_time = (
-            time.perf_counter()
-            - start_retrieval
-        )
+        retrieval_time = time.perf_counter() - start_retrieval
 
         # 2. Construction du contexte
         context_parts = []
@@ -83,15 +76,9 @@ PASSAGE :
 
         answer = ollama_result["response"]
 
-        llm_time = (
-            time.perf_counter()
-            - start_llm
-        )
+        llm_time = time.perf_counter() - start_llm
 
-        total_time = (
-            retrieval_time
-            + llm_time
-        )
+        total_time = retrieval_time + llm_time
 
         # 4. Affichage de la réponse
         print("QUESTION :")
@@ -131,15 +118,9 @@ PASSAGE :
         print("=" * 70)
         print("OLLAMA")
 
-        total_duration = (
-            ollama_result.get("total_duration", 0)
-            / 1_000_000_000
-        )
+        total_duration = ollama_result.get("total_duration", 0) / 1_000_000_000
 
-        load_duration = (
-            ollama_result.get("load_duration", 0)
-            / 1_000_000_000
-        )
+        load_duration = ollama_result.get("load_duration", 0) / 1_000_000_000
 
         prompt_eval_duration = (
             ollama_result.get(
@@ -200,10 +181,7 @@ PASSAGE :
         if eval_duration > 0:
             print(
                 "Vitesse generation :",
-                (
-                    f"{generated_tokens / eval_duration:.2f} "
-                    "tokens/s"
-                ),
+                (f"{generated_tokens / eval_duration:.2f} tokens/s"),
             )
 
     finally:

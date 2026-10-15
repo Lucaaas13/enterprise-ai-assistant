@@ -1,7 +1,6 @@
 from app.database.database import SessionLocal
-from app.services.search_service import hybrid_search
 from app.services.reranker_service import rerank_results
-
+from app.services.search_service import hybrid_search
 
 QUESTIONS = [
     "Quel outil est utilisé pour exécuter le LLM localement ?",
@@ -45,10 +44,7 @@ def main():
                     f"{result['reranker_score']:.4f}"
                 )
 
-                print(
-                    result["content"][:300]
-                    .replace("\n", " ")
-                )
+                print(result["content"][:300].replace("\n", " "))
 
     finally:
         db.close()

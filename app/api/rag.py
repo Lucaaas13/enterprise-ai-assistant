@@ -8,7 +8,6 @@ from app.schemas.rag import (
 )
 from app.services.rag_service import answer_question
 
-
 router = APIRouter(
     prefix="/rag",
     tags=["RAG"],
