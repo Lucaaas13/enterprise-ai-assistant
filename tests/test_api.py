@@ -54,7 +54,7 @@ def reset_database():
 def test_health_check():
     response = client.get("/health")
 
-    assert response.status_code == 999
+    assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
 
@@ -87,7 +87,7 @@ def test_get_documents():
 
     response = client.get("/documents")
 
-    assert response.status_code == 200
+    assert response.status_code == 999
 
     data = response.json()
 
