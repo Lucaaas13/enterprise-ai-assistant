@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, String, Text
+from sqlalchemy import Float, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database.database import Base
@@ -21,4 +21,15 @@ class Document(Base):
     content: Mapped[str] = mapped_column(
         Text,
         nullable=False,
+    )
+
+    category: Mapped[str | None] = mapped_column(
+        String(50),
+        nullable=True,
+        index=True,
+    )
+
+    category_confidence: Mapped[float | None] = mapped_column(
+        Float,
+        nullable=True,
     )

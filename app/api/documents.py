@@ -2,13 +2,17 @@ from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.orm import Session
 
 from app.database.database import get_db
+from app.ml.classification_service import predict_category
 from app.schemas.chunk import ChunkResponse
 from app.schemas.document import DocumentCreate, DocumentResponse
 from app.services.chunk_service import (
     create_chunks_for_document,
     get_chunks_by_document,
 )
-from app.services.document_service import create_document, get_documents
+from app.services.document_service import (
+    create_document,
+    get_documents,
+)
 from app.services.pdf_service import extract_pages_from_pdf
 
 router = APIRouter(
@@ -26,7 +30,10 @@ def add_document(
     document: DocumentCreate,
     db: Session = Depends(get_db),
 ):
-    return create_document(db, document)
+    return create_document(
+        db,
+        document,
+    )
 
 
 @router.get(
@@ -58,11 +65,11 @@ async def upload_document(
 
     try:
         pages = extract_pages_from_pdf(file_content)
-    except Exception:
+    except Exception as exc:
         raise HTTPException(
             status_code=400,
             detail="Unable to read PDF file",
-        )
+        ) from exc
 
     if not pages:
         raise HTTPException(
@@ -72,14 +79,18 @@ async def upload_document(
 
     full_text = "\n\n".join(text for _, text in pages)
 
+    classification = predict_category(full_text)
+
     document = DocumentCreate(
         title=file.filename or "Untitled PDF",
         content=full_text,
     )
 
     saved_document = create_document(
-        db,
-        document,
+        db=db,
+        document=document,
+        category=classification["category"],
+        category_confidence=classification["confidence"],
     )
 
     create_chunks_for_document(
