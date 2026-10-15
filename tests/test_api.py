@@ -87,7 +87,7 @@ def test_get_documents():
 
     response = client.get("/documents")
 
-    assert response.status_code == 999
+    assert response.status_code == 200
 
     data = response.json()
 
