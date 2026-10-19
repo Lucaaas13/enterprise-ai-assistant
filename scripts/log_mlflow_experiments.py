@@ -3,43 +3,23 @@ from pathlib import Path
 
 import mlflow
 
-
 PROJECT_ROOT = Path(__file__).parent.parent
 
-RESULTS_DIR = (
-    PROJECT_ROOT
-    / "evaluation"
-    / "results"
-)
+RESULTS_DIR = PROJECT_ROOT / "evaluation" / "results"
 
-RETRIEVAL_RESULTS = (
-    RESULTS_DIR
-    / "retrieval_strategies_comparison.json"
-)
+RETRIEVAL_RESULTS = RESULTS_DIR / "retrieval_strategies_comparison.json"
 
-RAG_RESULTS = (
-    RESULTS_DIR
-    / "rag_baseline.json"
-)
+RAG_RESULTS = RESULTS_DIR / "rag_baseline.json"
 
-MLFLOW_DB = (
-    PROJECT_ROOT
-    / "mlflow.db"
-)
+MLFLOW_DB = PROJECT_ROOT / "mlflow.db"
 
 
 def configure_mlflow():
-    tracking_uri = (
-        f"sqlite:///{MLFLOW_DB.as_posix()}"
-    )
+    tracking_uri = f"sqlite:///{MLFLOW_DB.as_posix()}"
 
-    mlflow.set_tracking_uri(
-        tracking_uri
-    )
+    mlflow.set_tracking_uri(tracking_uri)
 
-    mlflow.set_experiment(
-        "Enterprise AI Knowledge Assistant"
-    )
+    mlflow.set_experiment("Enterprise AI Knowledge Assistant")
 
 
 def log_retrieval_experiments():
@@ -50,18 +30,12 @@ def log_retrieval_experiments():
     ) as file:
         benchmark = json.load(file)
 
-    base_config = benchmark[
-        "configuration"
-    ]
+    base_config = benchmark["configuration"]
 
-    for strategy in benchmark[
-        "strategies"
-    ]:
+    for strategy in benchmark["strategies"]:
         metrics = strategy["metrics"]
 
-        with mlflow.start_run(
-            run_name=strategy["name"]
-        ):
+        with mlflow.start_run(run_name=strategy["name"]):
             mlflow.log_param(
                 "experiment_type",
                 "retrieval",
@@ -74,45 +48,32 @@ def log_retrieval_experiments():
 
             mlflow.log_param(
                 "embedding_model",
-                base_config[
-                    "embedding_model"
-                ],
+                base_config["embedding_model"],
             )
 
             mlflow.log_param(
                 "embedding_dimension",
-                base_config[
-                    "embedding_dimension"
-                ],
+                base_config["embedding_dimension"],
             )
 
             mlflow.log_param(
                 "chunk_size_tokens",
-                base_config[
-                    "chunk_size_tokens"
-                ],
+                base_config["chunk_size_tokens"],
             )
 
             mlflow.log_param(
                 "chunk_overlap_tokens",
-                base_config[
-                    "chunk_overlap_tokens"
-                ],
+                base_config["chunk_overlap_tokens"],
             )
 
             mlflow.log_param(
                 "max_results",
-                base_config[
-                    "max_results"
-                ],
+                base_config["max_results"],
             )
 
             mlflow.log_param(
                 "reranker",
-                (
-                    "reranker"
-                    in strategy["name"]
-                ),
+                ("reranker" in strategy["name"]),
             )
 
             mlflow.log_metric(
@@ -137,9 +98,7 @@ def log_retrieval_experiments():
 
             mlflow.log_metric(
                 "average_latency_seconds",
-                metrics[
-                    "average_latency_seconds"
-                ],
+                metrics["average_latency_seconds"],
             )
 
 
@@ -151,17 +110,11 @@ def log_rag_baseline():
     ) as file:
         benchmark = json.load(file)
 
-    config = benchmark[
-        "configuration"
-    ]
+    config = benchmark["configuration"]
 
-    metrics = benchmark[
-        "metrics"
-    ]
+    metrics = benchmark["metrics"]
 
-    with mlflow.start_run(
-        run_name="rag_baseline"
-    ):
+    with mlflow.start_run(run_name="rag_baseline"):
         mlflow.log_param(
             "experiment_type",
             "rag",
@@ -174,23 +127,17 @@ def log_rag_baseline():
 
         mlflow.log_param(
             "embedding_model",
-            config[
-                "embedding_model"
-            ],
+            config["embedding_model"],
         )
 
         mlflow.log_param(
             "chunk_size_tokens",
-            config[
-                "chunk_size_tokens"
-            ],
+            config["chunk_size_tokens"],
         )
 
         mlflow.log_param(
             "chunk_overlap_tokens",
-            config[
-                "chunk_overlap_tokens"
-            ],
+            config["chunk_overlap_tokens"],
         )
 
         mlflow.log_param(
@@ -200,9 +147,7 @@ def log_rag_baseline():
 
         mlflow.log_param(
             "reranker",
-            str(
-                config["reranker"]
-            ),
+            str(config["reranker"]),
         )
 
         mlflow.log_param(
@@ -217,30 +162,22 @@ def log_rag_baseline():
 
         mlflow.log_metric(
             "answerable_accuracy",
-            metrics[
-                "answerable_accuracy"
-            ],
+            metrics["answerable_accuracy"],
         )
 
         mlflow.log_metric(
             "abstention_accuracy",
-            metrics[
-                "abstention_accuracy"
-            ],
+            metrics["abstention_accuracy"],
         )
 
         mlflow.log_metric(
             "hallucinations",
-            metrics[
-                "hallucinations"
-            ],
+            metrics["hallucinations"],
         )
 
         mlflow.log_metric(
             "average_latency_seconds",
-            metrics[
-                "average_latency_seconds"
-            ],
+            metrics["average_latency_seconds"],
         )
 
 
@@ -250,10 +187,7 @@ def main():
     log_retrieval_experiments()
     log_rag_baseline()
 
-    print(
-        "Expériences enregistrées "
-        "dans MLflow."
-    )
+    print("Expériences enregistrées dans MLflow.")
 
 
 if __name__ == "__main__":

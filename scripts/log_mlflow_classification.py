@@ -2,26 +2,19 @@ from pathlib import Path
 
 import mlflow
 
-
 PROJECT_ROOT = Path(__file__).parent.parent
 
 MLFLOW_DB = PROJECT_ROOT / "mlflow.db"
 
 
 def configure_mlflow():
-    mlflow.set_tracking_uri(
-        f"sqlite:///{MLFLOW_DB.as_posix()}"
-    )
+    mlflow.set_tracking_uri(f"sqlite:///{MLFLOW_DB.as_posix()}")
 
-    mlflow.set_experiment(
-        "Enterprise AI Knowledge Assistant"
-    )
+    mlflow.set_experiment("Enterprise AI Knowledge Assistant")
 
 
 def log_pytorch_baseline():
-    with mlflow.start_run(
-        run_name="classification_pytorch_baseline"
-    ):
+    with mlflow.start_run(run_name="classification_pytorch_baseline"):
         mlflow.log_param(
             "experiment_type",
             "document_classification",
@@ -79,9 +72,7 @@ def log_pytorch_baseline():
 
 
 def log_transformer():
-    with mlflow.start_run(
-        run_name="classification_huggingface_transformer"
-    ):
+    with mlflow.start_run(run_name="classification_huggingface_transformer"):
         mlflow.log_param(
             "experiment_type",
             "document_classification",
@@ -159,10 +150,7 @@ def main():
     log_pytorch_baseline()
     log_transformer()
 
-    print(
-        "Expériences de classification "
-        "enregistrées dans MLflow."
-    )
+    print("Expériences de classification enregistrées dans MLflow.")
 
 
 if __name__ == "__main__":
