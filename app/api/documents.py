@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.database.database import get_db
 from app.ml.classification_service import predict_category
+from app.models.document import Document
 from app.schemas.chunk import ChunkResponse
 from app.schemas.document import DocumentCreate, DocumentResponse
 from app.services.chunk_service import (
@@ -58,7 +60,7 @@ async def upload_document(
     if file.content_type != "application/pdf":
         raise HTTPException(
             status_code=400,
-            detail="Only PDF files are supported",
+            detail="Only PDF files are supported.",
         )
 
     file_content = await file.read()
@@ -68,21 +70,42 @@ async def upload_document(
     except Exception as exc:
         raise HTTPException(
             status_code=400,
-            detail="Unable to read PDF file",
+            detail="Unable to read PDF.",
         ) from exc
 
     if not pages:
         raise HTTPException(
             status_code=400,
-            detail="No text could be extracted from PDF",
+            detail="PDF contains no readable text.",
         )
 
     full_text = "\n\n".join(text for _, text in pages)
 
-    classification = predict_category(full_text)
+    # Check if the exact same document
+    # has already been uploaded.
+    existing_document = db.scalar(
+        select(Document).where(
+            Document.title == (file.filename or "Untitled PDF"),
+            Document.content == full_text,
+        )
+    )
+
+    if existing_document is not None:
+        raise HTTPException(
+            status_code=409,
+            detail=("This document has already been uploaded."),
+        )
+
+    try:
+        classification = predict_category(full_text)
+    except RuntimeError:
+        classification = {
+            "category": None,
+            "confidence": None,
+        }
 
     document = DocumentCreate(
-        title=file.filename or "Untitled PDF",
+        title=(file.filename or "Untitled PDF"),
         content=full_text,
     )
 

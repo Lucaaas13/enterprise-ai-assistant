@@ -106,3 +106,47 @@ def test_create_document_without_title():
     )
 
     assert response.status_code == 422
+
+
+def test_duplicate_pdf_upload(
+    monkeypatch,
+):
+    monkeypatch.setattr(
+        "app.api.documents.extract_pages_from_pdf",
+        lambda _: [
+            (
+                1,
+                "Same PDF content.",
+            )
+        ],
+    )
+
+    monkeypatch.setattr(
+        "app.api.documents.predict_category",
+        lambda _: {
+            "category": "developpement",
+            "confidence": 0.90,
+        },
+    )
+
+    def upload_pdf():
+        return client.post(
+            "/documents/upload",
+            files={
+                "file": (
+                    "duplicate.pdf",
+                    b"fake-pdf-content",
+                    "application/pdf",
+                )
+            },
+        )
+
+    first_response = upload_pdf()
+
+    assert first_response.status_code == 201
+
+    second_response = upload_pdf()
+
+    assert second_response.status_code == 409
+
+    assert second_response.json() == {"detail": ("This document has already been uploaded.")}
